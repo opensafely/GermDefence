@@ -9,8 +9,9 @@ study = StudyDefinition(
         "incidence": 0.5,
     },
     # include all patients registered with a GP at time of intervention
-    population = patients.registered_as_of(
-        "2020-11-10",
+    population = patients.registered_with_one_practice_between(
+        start_date="2020-11-10",
+        end_date="2020-11-10",
         return_expectations={"incidence": 0.98},
     ),
 
@@ -48,7 +49,7 @@ study = StudyDefinition(
     ),
 
     # count of consultations for probable covid
-    coviddiag_events=patients.with_gp_consultations(
+    coviddiag_events=patients.with_these_clinical_events(
         coviddiag_codes,
         between=["2020-07-14", "2021-03-15"],
         returning="number_of_matches_in_period",
@@ -59,7 +60,7 @@ study = StudyDefinition(
     ),
 
     # count of consultations for suspected covid (sensitive codelist)
-    covidsympsens_events=patients.with_gp_consultations(
+    covidsympsens_events=patients.with_these_clinical_events(
         covidsympsens_codes,
         between=["2020-07-14", "2021-03-15"],
         returning="number_of_matches_in_period",
@@ -70,7 +71,7 @@ study = StudyDefinition(
     ),
 
     # count of consultations for suspected covid (specific codelist)
-    covidsympspec_events=patients.with_gp_consultations(
+    covidsympspec_events=patients.with_these_clinical_events(
         covidsympspec_codes,
         between=["2020-07-14", "2021-03-15"],
         returning="number_of_matches_in_period",
@@ -80,8 +81,8 @@ study = StudyDefinition(
         },
     ),
 
-    # count of consultations where antibiotics were prescribed
-    antibio_events=patients.with_gp_consultations(
+    #count of consultations where antibiotics were prescribed
+    antibio_events=patients.with_these_medications(
         antibio_codes,
         between=["2020-07-14", "2021-03-15"],
         returning="number_of_matches_in_period",

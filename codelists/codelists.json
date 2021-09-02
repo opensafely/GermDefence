@@ -1,3 +1,46 @@
 {
-  "files": {}
+  "files": {
+    "user-S_Walter-respiratory-tract-infections.csv": {
+      "id": "user/S_Walter/respiratory-tract-infections/23f7396b",
+      "url": "https://codelists.opensafely.org/codelist/user/S_Walter/respiratory-tract-infections/23f7396b/",
+      "downloaded_at": "2021-07-26 09:58:16.067718Z",
+      "sha": "2e23ab3bc323ded0e17f05f9ce43775be80f2028"
+    },
+    "user-S_Walter-acute-respiratory-tract-infections.csv": {
+      "id": "user/S_Walter/acute-respiratory-tract-infections/75b06bce",
+      "url": "https://codelists.opensafely.org/codelist/user/S_Walter/acute-respiratory-tract-infections/75b06bce/",
+      "downloaded_at": "2021-07-26 09:58:16.367458Z",
+      "sha": "180d565d7a031a91eaa6ce07ab15f014961640a1"
+    },
+    "user-S_Walter-gastrointestinal-infections.csv": {
+      "id": "user/S_Walter/gastrointestinal-infections/27cf5239",
+      "url": "https://codelists.opensafely.org/codelist/user/S_Walter/gastrointestinal-infections/27cf5239/",
+      "downloaded_at": "2021-07-26 09:58:16.722852Z",
+      "sha": "3c857edcc593d41676b573213b69d54f30d007c7"
+    },
+    "user-S_Walter-covid-19-diagnoses.csv": {
+      "id": "user/S_Walter/covid-19-diagnoses/310ceaf3",
+      "url": "https://codelists.opensafely.org/codelist/user/S_Walter/covid-19-diagnoses/310ceaf3/",
+      "downloaded_at": "2021-07-26 09:58:17.008142Z",
+      "sha": "11b1929752ba86607d3bc4ee3e88fb8929c9556e"
+    },
+    "user-S_Walter-covid-19-symptoms-sensitive.csv": {
+      "id": "user/S_Walter/covid-19-symptoms-sensitive/0fe537dc",
+      "url": "https://codelists.opensafely.org/codelist/user/S_Walter/covid-19-symptoms-sensitive/0fe537dc/",
+      "downloaded_at": "2021-07-26 09:58:17.279147Z",
+      "sha": "22cee80efb3366683930962318661a44bcc501e9"
+    },
+    "user-S_Walter-covid-19-symptoms-specific.csv": {
+      "id": "user/S_Walter/covid-19-symptoms-specific/28f4ab11",
+      "url": "https://codelists.opensafely.org/codelist/user/S_Walter/covid-19-symptoms-specific/28f4ab11/",
+      "downloaded_at": "2021-07-26 09:58:17.545278Z",
+      "sha": "07bfb7fc094a857fa4b2e027e6c7026773d25334"
+    },
+    "user-S_Walter-germdefence-antibiotics.csv": {
+      "id": "user/S_Walter/germdefence-antibiotics/3b07ce3f",
+      "url": "https://codelists.opensafely.org/codelist/user/S_Walter/germdefence-antibiotics/3b07ce3f/",
+      "downloaded_at": "2021-08-27 14:50:40.566703Z",
+      "sha": "03b47c0b814bdc72a96b81bfd638809226dc2680"
+    }
+  }
 }

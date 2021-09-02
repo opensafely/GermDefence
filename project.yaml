@@ -17,3 +17,11 @@ actions:
     outputs:
       moderately_sensitive:
         measure_csv: output/measures/measure_*.csv
+
+  run_model:
+    run: stata-mp:latest analysis/model_test.do
+    needs: [generate_measures]
+    outputs:
+      moderately_sensitive:
+        model: output/PerProtocol.xlsx
+	log: output/log.log
