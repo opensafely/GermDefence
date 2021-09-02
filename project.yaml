@@ -24,4 +24,4 @@ actions:
     outputs:
       moderately_sensitive:
         model: output/PerProtocol.xlsx
-	log: output/log.log
+        log: output/log.log
