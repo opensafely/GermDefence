@@ -83,3 +83,11 @@ putexcel A1=matrix(r(table)), names
 xi: glm adm_count i.users_cat3 i.imd_decile2 minority_ethnic_total2 medianage2, family(nb) link(log) exposure(listsize)
 putexcel set "$gd\output\process_eval2.xlsx", sheet("adm") modify
 putexcel A1=matrix(r(table)), names
+
+
+** 3. Model only practices with >1% uptake
+
+*A. User rate as continuous
+
+
+*B. User rate as categorical 

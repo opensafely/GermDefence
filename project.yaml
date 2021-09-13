@@ -1,15 +1,16 @@
 version: '3.0'
 
 expectations:
-  population_size: 100000
+  population_size: 10000
 
 actions:
 
   generate_study_population:
-    run: cohortextractor:latest generate_cohort --study-definition study_definition --index-date-range "2020-07-14 to 2021-03-15 by week" --skip-existing --output-dir=output/measures
+    run: cohortextractor:latest generate_cohort --study-definition study_definition --index-date-range "2020-07-14 to 2021-03-15 by week" --skip-existing --output-format=csv.gz --output-dir=output/measures
     outputs:
       highly_sensitive:
-        cohort: output/measures/input_*.csv
+        cohort: output/measures/input_*.csv.gz
+
 
   generate_measures:
     run: cohortextractor:latest generate_measures --study-definition study_definition --skip-existing --output-dir=output/measures
@@ -19,8 +20,7 @@ actions:
         measure_csv: output/measures/measure_*.csv
 
   run_model:
-    run: stata-mp:latest analysis/model_test.do
-    needs: [generate_measures]
+    run: stata-mp:latest analysis/model_test.do --output-dir=output
     outputs:
       moderately_sensitive:
         model: output/PerProtocol.xlsx

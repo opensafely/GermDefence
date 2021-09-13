@@ -147,6 +147,7 @@ putexcel set "$gd\output\PerProtocol.xlsx", sheet("adm") modify
 putexcel A1=matrix(r(table)), names
 
 
+
 *** II. Time series analysis
 
 ** A. Weekly level analysis
@@ -157,6 +158,12 @@ gen intervention = uniform() < .5
 collapse (sum) rti_events arti_events gastro_events coviddiag_events covidsympsens_events covidsympspec_events antibio_events adm_events population, by(date2 week_date intervention)
 gen time=week_date - 17.5
 gen period = (date2>=d(10nov2020))
+
+*get covariates: mean age, % female, deprivation
+
+
+
+
 
 *create interaction variables
 gen time_period = 0

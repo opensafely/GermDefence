@@ -9,16 +9,14 @@ study = StudyDefinition(
         "incidence": 0.5,
     },
     # include all patients registered with a GP at time of intervention
-    population = patients.registered_with_one_practice_between(
-        start_date="2020-11-10",
-        end_date="2020-11-10",
-        return_expectations={"incidence": 0.98},
-    ),
+    index_date="2020-11-10",
+
+    population=patients.registered_as_of("index_date"),
 
     # count of consultations for respiratory tract infections
     RTI_events=patients.with_these_clinical_events(
         RTI_codes,
-        between=["2020-07-14", "2021-03-15"],
+        between=["index_date", "index_date + 6 days"],
         returning="number_of_matches_in_period",
         return_expectations={
         "int": {"distribution": "normal", "mean": 2, "stddev": 1},
@@ -29,7 +27,7 @@ study = StudyDefinition(
     # count of consultations for acute respiratory tract infections
     aRTI_events=patients.with_these_clinical_events(
         aRTI_codes,
-        between=["2020-07-14", "2021-03-15"],
+        between=["index_date", "index_date + 6 days"],
         returning="number_of_matches_in_period",
         return_expectations={
         "int": {"distribution": "normal", "mean": 2, "stddev": 1},
@@ -40,7 +38,7 @@ study = StudyDefinition(
     # count of consultations for gastrointestinal infections
     gastro_events=patients.with_these_clinical_events(
         gastro_codes,
-        between=["2020-07-14", "2021-03-15"],
+        between=["index_date", "index_date + 6 days"],
         returning="number_of_matches_in_period",
         return_expectations={
         "int": {"distribution": "normal", "mean": 2, "stddev": 1},
@@ -51,7 +49,7 @@ study = StudyDefinition(
     # count of consultations for probable covid
     coviddiag_events=patients.with_these_clinical_events(
         coviddiag_codes,
-        between=["2020-07-14", "2021-03-15"],
+        between=["index_date", "index_date + 6 days"],
         returning="number_of_matches_in_period",
         return_expectations={
         "int": {"distribution": "normal", "mean": 2, "stddev": 1},
@@ -62,7 +60,7 @@ study = StudyDefinition(
     # count of consultations for suspected covid (sensitive codelist)
     covidsympsens_events=patients.with_these_clinical_events(
         covidsympsens_codes,
-        between=["2020-07-14", "2021-03-15"],
+        between=["index_date", "index_date + 6 days"],
         returning="number_of_matches_in_period",
         return_expectations={
         "int": {"distribution": "normal", "mean": 2, "stddev": 1},
@@ -73,7 +71,7 @@ study = StudyDefinition(
     # count of consultations for suspected covid (specific codelist)
     covidsympspec_events=patients.with_these_clinical_events(
         covidsympspec_codes,
-        between=["2020-07-14", "2021-03-15"],
+        between=["index_date", "index_date + 6 days"],
         returning="number_of_matches_in_period",
         return_expectations={
         "int": {"distribution": "normal", "mean": 2, "stddev": 1},
@@ -84,7 +82,7 @@ study = StudyDefinition(
     #count of consultations where antibiotics were prescribed
     antibio_events=patients.with_these_medications(
         antibio_codes,
-        between=["2020-07-14", "2021-03-15"],
+        between=["index_date", "index_date + 6 days"],
         returning="number_of_matches_in_period",
         return_expectations={
         "int": {"distribution": "normal", "mean": 2, "stddev": 1},
@@ -95,7 +93,7 @@ study = StudyDefinition(
     #count of hospital admissions
     adm_events=patients.admitted_to_hospital(
         returning="number_of_matches_in_period",
-        between=["2020-07-14", "2021-03-15"],
+        between=["index_date", "index_date + 6 days"],
         date_format="YYYY-MM-DD",
         return_expectations={
         "int": {"distribution": "normal", "mean": 2, "stddev": 1},

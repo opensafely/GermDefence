@@ -5,62 +5,63 @@
 * Purpose:	test the process of running analysis on real data in opensafely using simplified progran and synthetic version of intervention indicator
 * Author:	Scott Walter, Sept 2021
 
-*send all output to log file
-log using "`c(pwd)'/output/log.log", replace
+global gd `c(pwd)'
+
+log using "$gd\output\log.log", replace
 
 *convert CSV files to .dta files
 
-import delimited `c(pwd)'/output/measures/measure_RTI_weekly.csv, clear
+import delimited using "$gd\output\measures\measure_RTI_weekly.csv", clear
 drop value
-save "`c(pwd)'/output/measures/measure_RTI_weekly.dta", replace
+save "$gd\output\measures\measure_RTI_weekly.dta", replace
 
-import delimited `c(pwd)'/output/measures/measure_aRTI_weekly.csv, clear
+import delimited using "$gd\output\measures\measure_aRTI_weekly.csv", clear
 drop population value
-save "`c(pwd)'/output/measures/measure_aRTI_weekly.dta", replace
+save "$gd\output\measures\measure_aRTI_weekly.dta", replace
 
-import delimited `c(pwd)'/output/measures/measure_gastro_weekly.csv, clear
+import delimited using "$gd\output\measures\measure_gastro_weekly.csv", clear
 drop population value
-save "`c(pwd)'/output/measures/measure_gastro_weekly.dta", replace
+save "$gd\output\measures\measure_gastro_weekly.dta", replace
 
-import delimited `c(pwd)'/output/measures/measure_coviddiag_weekly.csv, clear
+import delimited using "$gd\output\measures\measure_coviddiag_weekly.csv", clear
 drop population value
-save "`c(pwd)'/output/measures/measure_coviddiag_weekly.dta", replace
+save "$gd\output\measures\measure_coviddiag_weekly.dta", replace
 
-import delimited `c(pwd)'/output/measures/measure_covidsympsens_weekly.csv, clear
+import delimited using "$gd\output\measures\measure_covidsympsens_weekly.csv", clear
 drop population value
-save "`c(pwd)'/output/measures/measure_covidsympsens_weekly.dta", replace
+save "$gd\output\measures\measure_covidsympsens_weekly.dta", replace
 
-import delimited `c(pwd)'/output/measures/measure_covidsympspec_weekly.csv, clear
+import delimited using "$gd\output\measures\measure_covidsympspec_weekly.csv", clear
 drop population value
-save "`c(pwd)'/output/measures/measure_covidsympspec_weekly.dta", replace
+save "$gd\output\measures\measure_covidsympspec_weekly.dta", replace
 
-import delimited `c(pwd)'/output/measures/measure_antibio_weekly.csv, clear
+import delimited using "$gd\output\measures\measure_antibio_weekly.csv", clear
 drop population value
-save "`c(pwd)'/output/measures/measure_antibio_weekly.dta", replace
+save "$gd\output\measures\measure_antibio_weekly.dta", replace
 
-import delimited `c(pwd)'/output/measures/measure_adm_weekly.csv, clear
+import delimited using "$gd\output\measures\measure_adm_weekly.csv", clear
 drop population value
-save "`c(pwd)'/output/measures/measure_adm_weekly.dta", replace
+save "$gd\output\measures\measure_adm_weekly.dta", replace
 
 
 
 *get weekly level counts for any type of GP consultation - treat as base dataset
-use "`c(pwd)'/output/measures/measure_RTI_weekly.dta", clear
+use "$gd\output\measures\measure_RTI_weekly.dta", clear
 
 *+merge on tables for other outcomes to create single unified dataset
-merge 1:1 practice_id date using "`c(pwd)'/output/measures/measure_aRTI_weekly.dta"
+merge 1:1 practice_id date using "$gd\output\measures\measure_aRTI_weekly.dta"
 drop _merge
-merge 1:1 practice_id date using "`c(pwd)'/output/measures/measure_gastro_weekly.dta"
+merge 1:1 practice_id date using "$gd\output\measures\measure_gastro_weekly.dta"
 drop _merge
-merge 1:1 practice_id date using "`c(pwd)'/output/measures/measure_coviddiag_weekly.dta"
+merge 1:1 practice_id date using "$gd\output\measures\measure_coviddiag_weekly.dta"
 drop _merge
-merge 1:1 practice_id date using "`c(pwd)'/output/measures/measure_covidsympsens_weekly.dta"
+merge 1:1 practice_id date using "$gd\output\measures\measure_covidsympsens_weekly.dta"
 drop _merge
-merge 1:1 practice_id date using "`c(pwd)'/output/measures/measure_covidsympspec_weekly.dta"
+merge 1:1 practice_id date using "$gd\output\measures\measure_covidsympspec_weekly.dta"
 drop _merge
-merge 1:1 practice_id date using "`c(pwd)'/output/measures/measure_antibio_weekly.dta"
+merge 1:1 practice_id date using "$gd\output\measures\measure_antibio_weekly.dta"
 drop _merge
-merge 1:1 practice_id date using "`c(pwd)'/output/measures/measure_adm_weekly.dta"
+merge 1:1 practice_id date using "$gd\output\measures\measure_adm_weekly.dta"
 drop _merge
 
 
@@ -90,7 +91,7 @@ replace week_date = week + 25 if year==2021
 
  
 *save practice x week level data
-save "`c(pwd)'/output/practice_weekly.dta", replace
+save "$gd\output\practice_weekly.dta", replace
 
 
 *** I. Per protocol analysis
@@ -104,40 +105,40 @@ gen intervention = uniform() < .5
 *gen population = rpoisson(200)
 replace population=1 if population<1
 
-*+Compare event rates between intervention vs. control during post-intervention period: 10/11/20 - 15/03/21
+*+Compare event rates between intervention vs. control during post-intervention period: 10\11\20 - 15\03\21
 
 
 
 glm rti_events i.intervention, family(nb) link(log) exposure(population)
-putexcel set "`c(pwd)'/output/PerProtocol.xlsx", sheet("RTI") replace
+putexcel set "$gd\output\PerProtocol.xlsx", sheet("RTI") replace
 putexcel A1=matrix(r(table)), names 
 
 glm arti_events i.intervention, family(nb) link(log) exposure(population)
-putexcel set "`c(pwd)'/output/PerProtocol.xlsx", sheet("aRTI") modify
+putexcel set "$gd\output\PerProtocol.xlsx", sheet("aRTI") modify
 putexcel A1=matrix(r(table)), names
 
 glm gastro_events i.intervention, family(nb) link(log) exposure(population)
-putexcel set "`c(pwd)'/output/PerProtocol.xlsx", sheet("gastro") modify
+putexcel set "$gd\output\PerProtocol.xlsx", sheet("gastro") modify
 putexcel A1=matrix(r(table)), names
 
 glm coviddiag_events i.intervention, family(nb) link(log) exposure(population)
-putexcel set "`c(pwd)'/output/PerProtocol.xlsx", sheet("CovidDiag") modify
+putexcel set "$gd\output\PerProtocol.xlsx", sheet("CovidDiag") modify
 putexcel A1=matrix(r(table)), names
 
 glm covidsympsens_events i.intervention, family(nb) link(log) exposure(population)
-putexcel set "`c(pwd)'/output/PerProtocol.xlsx", sheet("CovidSympSens") modify
+putexcel set "$gd\output\PerProtocol.xlsx", sheet("CovidSympSens") modify
 putexcel A1=matrix(r(table)), names
 
 glm covidsympspec_events i.intervention, family(nb) link(log) exposure(population)
-putexcel set "`c(pwd)'/output/PerProtocol.xlsx", sheet("CovidSympSpec") modify
+putexcel set "$gd\output\PerProtocol.xlsx", sheet("CovidSympSpec") modify
 putexcel A1=matrix(r(table)), names
 
 glm antibio_events i.intervention, family(nb) link(log) exposure(population)
-putexcel set "`c(pwd)'/output/PerProtocol.xlsx", sheet("Antibio") modify
+putexcel set "$gd\output\PerProtocol.xlsx", sheet("Antibio") modify
 putexcel A1=matrix(r(table)), names
 
 glm adm_events i.intervention, family(nb) link(log) exposure(population)
-putexcel set "`c(pwd)'/output/PerProtocol.xlsx", sheet("adm") modify
+putexcel set "$gd\output\PerProtocol.xlsx", sheet("adm") modify
 putexcel A1=matrix(r(table)), names
 
 log close
