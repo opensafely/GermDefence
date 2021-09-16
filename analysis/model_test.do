@@ -5,9 +5,8 @@
 * Purpose:	test the process of running analysis on real data in opensafely using simplified progran and synthetic version of intervention indicator
 * Author:	Scott Walter, Sept 2021
 
-global gd `c(pwd)'
+global gd "`c(pwd)'/GitHub/GermDefence"
 
-log using "$gd/output/log.log", replace
 
 *convert CSV files to .dta files
 
@@ -140,5 +139,3 @@ putexcel A1=matrix(r(table)), names
 glm adm_events i.intervention, family(nb) link(log) exposure(population)
 putexcel set "$gd/output/PerProtocol.xlsx", sheet("adm") modify
 putexcel A1=matrix(r(table)), names
-
-log close

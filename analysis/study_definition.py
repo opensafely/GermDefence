@@ -17,7 +17,8 @@ study = StudyDefinition(
     RTI_events=patients.with_these_clinical_events(
         RTI_codes,
         between=["index_date", "index_date + 6 days"],
-        returning="number_of_matches_in_period",
+        returning="number_of_episodes",
+        episode_defined_as="series of events each <= 0 days apart",
         return_expectations={
         "int": {"distribution": "normal", "mean": 2, "stddev": 1},
         "incidence": 0.4,
@@ -28,7 +29,8 @@ study = StudyDefinition(
     aRTI_events=patients.with_these_clinical_events(
         aRTI_codes,
         between=["index_date", "index_date + 6 days"],
-        returning="number_of_matches_in_period",
+        returning="number_of_episodes",
+        episode_defined_as="series of events each <= 0 days apart",
         return_expectations={
         "int": {"distribution": "normal", "mean": 2, "stddev": 1},
         "incidence": 0.3,
@@ -39,7 +41,8 @@ study = StudyDefinition(
     gastro_events=patients.with_these_clinical_events(
         gastro_codes,
         between=["index_date", "index_date + 6 days"],
-        returning="number_of_matches_in_period",
+        returning="number_of_episodes",
+        episode_defined_as="series of events each <= 0 days apart",
         return_expectations={
         "int": {"distribution": "normal", "mean": 2, "stddev": 1},
         "incidence": 0.3,
@@ -50,7 +53,8 @@ study = StudyDefinition(
     coviddiag_events=patients.with_these_clinical_events(
         coviddiag_codes,
         between=["index_date", "index_date + 6 days"],
-        returning="number_of_matches_in_period",
+        returning="number_of_episodes",
+        episode_defined_as="series of events each <= 0 days apart",
         return_expectations={
         "int": {"distribution": "normal", "mean": 2, "stddev": 1},
         "incidence": 0.4,
@@ -61,7 +65,8 @@ study = StudyDefinition(
     covidsympsens_events=patients.with_these_clinical_events(
         covidsympsens_codes,
         between=["index_date", "index_date + 6 days"],
-        returning="number_of_matches_in_period",
+        returning="number_of_episodes",
+        episode_defined_as="series of events each <= 0 days apart",
         return_expectations={
         "int": {"distribution": "normal", "mean": 2, "stddev": 1},
         "incidence": 0.2,
@@ -72,7 +77,8 @@ study = StudyDefinition(
     covidsympspec_events=patients.with_these_clinical_events(
         covidsympspec_codes,
         between=["index_date", "index_date + 6 days"],
-        returning="number_of_matches_in_period",
+        returning="number_of_episodes",
+        episode_defined_as="series of events each <= 0 days apart",
         return_expectations={
         "int": {"distribution": "normal", "mean": 2, "stddev": 1},
         "incidence": 0.5,
@@ -83,7 +89,8 @@ study = StudyDefinition(
     antibio_events=patients.with_these_medications(
         antibio_codes,
         between=["index_date", "index_date + 6 days"],
-        returning="number_of_matches_in_period",
+        returning="number_of_episodes",
+        episode_defined_as="series of events each <= 0 days apart",
         return_expectations={
         "int": {"distribution": "normal", "mean": 2, "stddev": 1},
         "incidence": 0.8,
@@ -100,6 +107,7 @@ study = StudyDefinition(
         "incidence": 0.3,
         },
     ),
+    
     #GP practice ID
     practice_ID=patients.registered_practice_as_of(
         "2020-11-10",
