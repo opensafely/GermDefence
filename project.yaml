@@ -12,6 +12,11 @@ actions:
       highly_sensitive:
         cohort: output/measures/input_*.csv.gz
 
+  generate_practice_variables:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_practice --skip-existing --output-format=dta --output-dir=output
+    outputs:
+      highly_sensitive:
+        cohort: output/input_practice.dta
 
   generate_measures:
     run: cohortextractor:latest generate_measures --study-definition study_definition --skip-existing --output-dir=output/measures
