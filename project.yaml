@@ -49,9 +49,9 @@ actions:
         plot7: output/antibio_plot.emf
         plot8: output/adm_plot.emf
 
-  run_process_evaluation:
-    run: stata-mp:latest analysis/process_eval.do
-    outputs:
-      moderately_sensitive:
-        model1: output/process_eval_main.xlsx
-        model2: output/process_eval_alternative.xlsx
+#  run_process_evaluation:
+#    run: stata-mp:latest analysis/process_eval.do
+#    outputs:
+#      moderately_sensitive:
+#        model1: output/process_eval_main.xlsx
+#        model2: output/process_eval_alternative.xlsx
