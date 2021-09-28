@@ -40,14 +40,14 @@ actions:
         model2: output/DiD_weekly.xlsx
         model3: output/CITS_weekly.xlsx
         model4: output/CITS_RandInt.xlsx
-        plot1: output/rti_plot.emf
-        plot2: output/arti_plot.emf
-        plot3: output/gastro_plot.emf
-        plot4: output/coviddiag_plot.emf
-        plot5: output/covidsympsens_plot.emf
-        plot6: output/covidsympspec_plot.emf
-        plot7: output/antibio_plot.emf
-        plot8: output/adm_plot.emf
+        plot1: output/rti_plot.pdf
+        plot2: output/arti_plot.pdf
+        plot3: output/gastro_plot.pdf
+        plot4: output/coviddiag_plot.pdf
+        plot5: output/covidsympsens_plot.pdf
+        plot6: output/covidsympspec_plot.pdf
+        plot7: output/antibio_plot.pdf
+        plot8: output/adm_plot.pdf
 
 #  run_process_evaluation:
 #    run: stata-mp:latest analysis/process_eval.do
