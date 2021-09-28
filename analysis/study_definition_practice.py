@@ -24,7 +24,7 @@ study = StudyDefinition(
             },
         )
     ),
-    
+
     age=patients.age_as_of(
     "index_date",
     return_expectations={
@@ -86,11 +86,11 @@ study = StudyDefinition(
             "category": {
                 "ratios": {
                     "NA": 0.5,
-                    "10": 0.1,
-                    "30": 0.1,
-                    "50": 0.1,
-                    "70": 0.1,
-                    "90": 0.1                    
+                    "0.1": 0.1,
+                    "0.3": 0.1,
+                    "0.5": 0.1,
+                    "0.7": 0.1,
+                    "0.9": 0.1                    
                 },
             },
         },
@@ -116,7 +116,7 @@ study = StudyDefinition(
     ),
 
     #GP practice ID
-    practice_ID=patients.registered_practice_as_of(
+    practice_id=patients.registered_practice_as_of(
         "2020-11-10",
         returning="pseudo_id",
         return_expectations={

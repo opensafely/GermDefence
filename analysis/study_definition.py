@@ -11,7 +11,20 @@ study = StudyDefinition(
     # include all patients registered with a GP at time of intervention
     index_date="2020-11-10",
 
-    population=patients.registered_as_of("index_date"),
+    population=patients.satisfying(
+        """registered AND 
+        enrolled""",
+
+        registered=patients.registered_as_of("index_date"),
+
+        enrolled=patients.registered_practice_as_of(
+            "index_date",
+            returning="rct__germdefence__enrolled",
+            return_expectations={
+                "incidence": 0.99,
+            },
+        )
+    ),
 
     # count of consultations for respiratory tract infections
     RTI_events=patients.with_these_clinical_events(
@@ -109,7 +122,7 @@ study = StudyDefinition(
     ),
     
     #GP practice ID
-    practice_ID=patients.registered_practice_as_of(
+    practice_id=patients.registered_practice_as_of(
         "2020-11-10",
         returning="pseudo_id",
         return_expectations={
@@ -125,48 +138,48 @@ measures = [
         id="RTI_weekly",
         numerator="RTI_events",
         denominator="population",
-        group_by="practice_ID",
+        group_by="practice_id",
     ),
     Measure(
         id="aRTI_weekly",
         numerator="aRTI_events",
         denominator="population",
-        group_by="practice_ID",
+        group_by="practice_id",
     ),
     Measure(
         id="gastro_weekly",
         numerator="gastro_events",
         denominator="population",
-        group_by="practice_ID",
+        group_by="practice_id",
     ),
     Measure(
         id="coviddiag_weekly",
         numerator="coviddiag_events",
         denominator="population",
-        group_by="practice_ID",
+        group_by="practice_id",
     ),
     Measure(
         id="covidsympsens_weekly",
         numerator="covidsympsens_events",
         denominator="population",
-        group_by="practice_ID",
+        group_by="practice_id",
     ),
     Measure(
         id="covidsympspec_weekly",
         numerator="covidsympspec_events",
         denominator="population",
-        group_by="practice_ID",
+        group_by="practice_id",
     ),
     Measure(
         id="antibio_weekly",
         numerator="antibio_events",
         denominator="population",
-        group_by="practice_ID",
+        group_by="practice_id",
     ),
     Measure(
         id="adm_weekly",
         numerator="adm_events",
         denominator="population",
-        group_by="practice_ID",
+        group_by="practice_id",
     ),
 ]

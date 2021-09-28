@@ -6,8 +6,7 @@ expectations:
 actions:
 
   generate_study_population:
-#    run: cohortextractor:latest generate_cohort --study-definition study_definition --index-date-range "2020-07-14 to 2021-03-15 by week" --skip-existing --output-format=csv.gz --output-dir=output/measures
-    run: cohortextractor:latest generate_cohort --study-definition study_definition --index-date-range "2020-10-20 to 2021-12-01 by week" --skip-existing --output-format=csv.gz --output-dir=output/measures
+    run: cohortextractor:latest generate_cohort --study-definition study_definition --index-date-range "2020-07-14 to 2021-03-15 by week" --skip-existing --output-format=csv.gz --output-dir=output/measures
     outputs:
       highly_sensitive:
         cohort: output/measures/input_*.csv.gz
@@ -25,10 +24,34 @@ actions:
       highly_sensitive:
         measure_csv: output/measures/measure_*.csv
 
+  run_practice_variables:
+    run: stata-mp:latest analysis/practice_variables.do
+    needs: [generate_practice_variables]
+    outputs:
+      moderately_sensitive:
+        model: output/practice_variables.dta
+
   run_model:
-    run: stata-mp:latest analysis/model_test.do
+    run: stata-mp:latest analysis/model.do
     needs: [generate_measures]
     outputs:
       moderately_sensitive:
-        model: output/PerProtocol.xlsx
-        log: output/log.log
+        model1: output/PerProtocol.xlsx
+        model2: output/DiD_weekly.xlsx
+        model3: output/CITS_weekly.xlsx
+        model4: output/CITS_RandInt.xlsx
+        plot1: output/rti_plot.emf
+        plot2: output/arti_plot.emf
+        plot3: output/gastro_plot.emf
+        plot4: output/coviddiag_plot.emf
+        plot5: output/covidsympsens_plot.emf
+        plot6: output/covidsympspec_plot.emf
+        plot7: output/antibio_plot.emf
+        plot8: output/adm_plot.emf
+
+  run_process_evaluation:
+    run: stata-mp:latest analysis/process_eval.do
+    outputs:
+      moderately_sensitive:
+        model1: output/process_eval_main.xlsx
+        model2: output/process_eval_alternative.xlsx
