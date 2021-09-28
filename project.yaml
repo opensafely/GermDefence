@@ -33,8 +33,7 @@ actions:
 
   run_model:
     run: stata-mp:latest analysis/model.do
-    needs: [generate_measures]
-    needs: [run_practice_variables]
+    needs: [generate_measures, run_practice_variables]
     outputs:
       moderately_sensitive:
         model1: output/PerProtocol.xlsx
