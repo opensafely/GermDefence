@@ -238,7 +238,7 @@ predict rti_yhat
 gen rti_rate=rti_events/list_size
 gen rti_pred_rate=rti_yhat/list_size
 graph twoway (line rti_pred_rate time if intervention==1, lcolor(maroon)) (line rti_pred_rate time if intervention==0, lcolor(navy)) (scatter rti_rate time if intervention==1, mcolor(maroon) msymbol(o)) (scatter rti_rate time if intervention==0, mcolor(navy) msymbol(o)), legend(order(1 "Intervention estimate" 2 "Control estimate" 3 "Intervention rates" 4 "Control rates")) xline(0, lcolor(black) lpattern(dash))
-graph export "$gd/output/rti_plot.png", as(png)
+graph export "$gd/output/rti_plot.pdf", as(pdf)
 
 *Acute respiratory tract infections
 glm arti_events time intervention period time_intervention time_period intervention_period time_int_period, family(nb) link(log) exposure(list_size)
@@ -249,7 +249,7 @@ predict arti_yhat
 gen arti_rate=arti_events/list_size
 gen arti_pred_rate=arti_yhat/list_size
 graph twoway (line arti_pred_rate time if intervention==1, lcolor(maroon)) (line arti_pred_rate time if intervention==0, lcolor(navy)) (scatter arti_rate time if intervention==1, mcolor(maroon) msymbol(o)) (scatter arti_rate time if intervention==0, mcolor(navy) msymbol(o)), legend(order(1 "Intervention estimate" 2 "Control estimate" 3 "Intervention rates" 4 "Control rates")) xline(0, lcolor(black) lpattern(dash))
-graph export "$gd/output/arti_plot.png", as(png)
+graph export "$gd/output/arti_plot.pdf", as(pdf)
 
 *Gastro intestinal infections
 glm gastro_events time intervention period time_intervention time_period intervention_period time_int_period, family(nb) link(log) exposure(list_size)
@@ -260,7 +260,7 @@ predict gastro_yhat
 gen gastro_rate=gastro_events/list_size
 gen gastro_pred_rate=gastro_yhat/list_size
 graph twoway (line gastro_pred_rate time if intervention==1, lcolor(maroon)) (line gastro_pred_rate time if intervention==0, lcolor(navy)) (scatter gastro_rate time if intervention==1, mcolor(maroon) msymbol(o)) (scatter gastro_rate time if intervention==0, mcolor(navy) msymbol(o)), legend(order(1 "Intervention estimate" 2 "Control estimate" 3 "Intervention rates" 4 "Control rates")) xline(0, lcolor(black) lpattern(dash))
-graph export "$gd/output/gastro_plot.png", as(png)
+graph export "$gd/output/gastro_plot.pdf", as(pdf)
 
 *Covid-19 diagnoses
 glm coviddiag_events time intervention period time_intervention time_period intervention_period time_int_period, family(nb) link(log) exposure(list_size)
@@ -271,7 +271,7 @@ predict coviddiag_yhat
 gen coviddiag_rate=coviddiag_events/list_size
 gen coviddiag_pred_rate=coviddiag_yhat/list_size
 graph twoway (line coviddiag_pred_rate time if intervention==1, lcolor(maroon)) (line coviddiag_pred_rate time if intervention==0, lcolor(navy)) (scatter coviddiag_rate time if intervention==1, mcolor(maroon) msymbol(o)) (scatter coviddiag_rate time if intervention==0, mcolor(navy) msymbol(o)), legend(order(1 "Intervention estimate" 2 "Control estimate" 3 "Intervention rates" 4 "Control rates")) xline(0, lcolor(black) lpattern(dash))
-graph export "$gd/output/coviddiag_plot.png", as(png)
+graph export "$gd/output/coviddiag_plot.pdf", as(pdf)
 
 *Covid-19 symptoms - senstivie list
 glm covidsympsens_events time intervention period time_intervention time_period intervention_period time_int_period, family(nb) link(log) exposure(list_size)
@@ -282,7 +282,7 @@ predict covidsympsens_yhat
 gen covidsympsens_rate=covidsympsens_events/list_size
 gen covidsympsens_pred_rate=covidsympsens_yhat/list_size
 graph twoway (line covidsympsens_pred_rate time if intervention==1, lcolor(maroon)) (line covidsympsens_pred_rate time if intervention==0, lcolor(navy)) (scatter covidsympsens_rate time if intervention==1, mcolor(maroon) msymbol(o)) (scatter covidsympsens_rate time if intervention==0, mcolor(navy) msymbol(o)), legend(order(1 "Intervention estimate" 2 "Control estimate" 3 "Intervention rates" 4 "Control rates")) xline(0, lcolor(black) lpattern(dash))
-graph export "$gd/output/covidsympsens_plot.png", as(png)
+graph export "$gd/output/covidsympsens_plot.pdf", as(pdf)
 
 *Covid-19 symptoms - specific list
 glm covidsympspec_events time intervention period time_intervention time_period intervention_period time_int_period, family(nb) link(log) exposure(list_size)
@@ -293,7 +293,7 @@ predict covidsympspec_yhat
 gen covidsympspec_rate=covidsympspec_events/list_size
 gen covidsympspec_pred_rate=covidsympspec_yhat/list_size
 graph twoway (line covidsympspec_pred_rate time if intervention==1, lcolor(maroon)) (line covidsympspec_pred_rate time if intervention==0, lcolor(navy)) (scatter covidsympspec_rate time if intervention==1, mcolor(maroon) msymbol(o)) (scatter covidsympspec_rate time if intervention==0, mcolor(navy) msymbol(o)), legend(order(1 "Intervention estimate" 2 "Control estimate" 3 "Intervention rates" 4 "Control rates")) xline(0, lcolor(black) lpattern(dash))
-graph export "$gd/output/covidsympspec_plot.png", as(png)
+graph export "$gd/output/covidsympspec_plot.pdf", as(pdf)
 
 *Antibiotics
 glm antibio_events time intervention period time_intervention time_period intervention_period time_int_period, family(nb) link(log) exposure(list_size)
@@ -304,7 +304,7 @@ predict antibio_yhat
 gen antibio_rate=antibio_events/list_size
 gen antibio_pred_rate=antibio_yhat/list_size
 graph twoway (line antibio_pred_rate time if intervention==1, lcolor(maroon)) (line antibio_pred_rate time if intervention==0, lcolor(navy)) (scatter antibio_rate time if intervention==1, mcolor(maroon) msymbol(o)) (scatter antibio_rate time if intervention==0, mcolor(navy) msymbol(o)), legend(order(1 "Intervention estimate" 2 "Control estimate" 3 "Intervention rates" 4 "Control rates")) xline(0, lcolor(black) lpattern(dash))
-graph export "$gd/output/antibio_plot.png", as(png)
+graph export "$gd/output/antibio_plot.pdf", as(pdf)
 
 *Hospital admissions
 glm adm_events time intervention period time_intervention time_period intervention_period time_int_period, family(nb) link(log) exposure(list_size)
@@ -315,7 +315,7 @@ predict adm_yhat
 gen adm_rate=adm_events/list_size
 gen adm_pred_rate=adm_yhat/list_size
 graph twoway (line adm_pred_rate time if intervention==1, lcolor(maroon)) (line adm_pred_rate time if intervention==0, lcolor(navy)) (scatter adm_rate time if intervention==1, mcolor(maroon) msymbol(o)) (scatter adm_rate time if intervention==0, mcolor(navy) msymbol(o)), legend(order(1 "Intervention estimate" 2 "Control estimate" 3 "Intervention rates" 4 "Control rates")) xline(0, lcolor(black) lpattern(dash))
-graph export "$gd/output/adm_plot.png", as(png)
+graph export "$gd/output/adm_plot.pdf", as(pdf)
 
 
 
