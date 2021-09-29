@@ -39,8 +39,8 @@ collapse (median) median_age=age (sum) n_female=sex2 (first) practice_trial_arm 
 gen female_pct=n_female/list_size
 
 gen intervention=0
-replace intervention=1 if practice_trial_arm=="int"
+replace intervention=1 if practice_trial_arm=="1"
 
 *save practice-level data for use in main analysis programs
 save "$gd/output/practice_variables.dta", replace
-export excel using "$gd/output/practice_variables.xlsx", firstrow(variables)
+export excel using "$gd/output/practice_variables.xlsx", firstrow(variables) replace
