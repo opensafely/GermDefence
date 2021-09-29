@@ -43,3 +43,4 @@ replace intervention=1 if practice_trial_arm=="int"
 
 *save practice-level data for use in main analysis programs
 save "$gd/output/practice_variables.dta", replace
+export excel using "$gd/output/practice_variables.xlsx", firstrow(variables)

@@ -30,6 +30,7 @@ actions:
     outputs:
       moderately_sensitive:
         model: output/practice_variables.dta
+	model2: output/practice_variables.xlsx
 
   run_model:
     run: stata-mp:latest analysis/model.do
