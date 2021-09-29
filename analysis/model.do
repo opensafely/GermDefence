@@ -176,6 +176,9 @@ gen period = (date2>=d(10nov2020))
 merge m:1 intervention using "$gd/output/pop_by_intervention.dta"
 drop _merge
 
+*check data
+export excel using "$gd/output/weekly_check.xlsx", firstrow(variables) replace
+
 
 *create interaction variables
 gen time_period = 0

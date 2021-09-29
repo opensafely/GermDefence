@@ -39,6 +39,7 @@ actions:
       moderately_sensitive:
         model1: output/PerProtocol.xlsx
         model2: output/DiD_weekly.xlsx
+        check: output/weekly_check.xlsx
         model3: output/CITS_weekly.xlsx
         model4: output/CITS_RandInt.xlsx
         plot1: output/rti_plot.pdf
