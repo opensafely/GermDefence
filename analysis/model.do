@@ -111,7 +111,7 @@ drop _merge
 *save data for use in process evaluation
 save "$gd/output/process_eval.dta", replace
 
-drop if pseudo_id==0
+drop if practice_id==0
 
 *+Compare event rates between intervention vs. control during post-intervention period: 10/11/20 - 15/03/21
 
@@ -177,7 +177,7 @@ gen period = (date2>=d(10nov2020))
 merge m:1 intervention using "$gd/output/pop_by_intervention.dta"
 drop _merge
 
-drop if pseudo_id==0
+drop if practice_id==0
 
 *check data
 export excel using "$gd/output/weekly_check.xlsx", firstrow(variables) replace
@@ -347,7 +347,7 @@ replace intervention_period = 1 if intervention==1 & period==1
 gen time_int_period = 0
 replace time_int_period = time if intervention_period==1
 
-drop if pseudo_id==0
+drop if practice_id==0
 
 export excel using "$gd/output/practice_weekly_glmm.xlsx", firstrow(variables) replace
 
