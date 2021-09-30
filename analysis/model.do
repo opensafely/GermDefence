@@ -96,7 +96,7 @@ replace week_date = week + 25 if year==2021
 
 *save practice x week level data
 save "$gd/output/practice_weekly.dta", replace
-export excel using "$gd/output/practice_weekly.xlsx", firstrow(variables) replace
+
 
 *** I. Per protocol analysis
 
@@ -343,6 +343,9 @@ replace intervention_period = 1 if intervention==1 & period==1
 
 gen time_int_period = 0
 replace time_int_period = time if intervention_period==1
+
+export excel using "$gd/output/practice_weekly_glmm.xlsx", firstrow(variables) replace
+
 
 *Random intercepts CITS
 menbreg rti_events time intervention period time_intervention time_period intervention_period time_int_period median_age deprivation_pctile female_pct, exposure(list_size) || practice_id: 
