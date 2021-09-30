@@ -115,7 +115,7 @@ drop _merge
 *save data for use in process evaluation
 save "$gd/output/process_eval.dta", replace
 
-drop if practice_id==0
+*drop if practice_id==0
 
 *+Compare event rates between intervention vs. control during post-intervention period: 10/11/20 - 15/03/21
 
@@ -167,7 +167,7 @@ tab list_size
 *get practice x week level data, then collapse to one row per week, summing event counts for each outcome
 use "$gd/output/practice_weekly.dta", replace
 
-drop if practice_id==0
+*drop if practice_id==0
 
 *add intervention group indicator
 merge m:1 practice_id using "$gd/output/practice_variables.dta"
@@ -352,7 +352,7 @@ replace intervention_period = 1 if intervention==1 & period==1
 gen time_int_period = 0
 replace time_int_period = time if intervention_period==1
 
-drop if practice_id==0
+*drop if practice_id==0
 
 export excel using "$gd/output/practice_weekly_glmm.xlsx", firstrow(variables) replace
 
