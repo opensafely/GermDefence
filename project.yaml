@@ -54,6 +54,7 @@ actions:
 
   run_process_evaluation:
     run: stata-mp:latest analysis/process_eval.do
+    needs: [model.do]
     outputs:
       moderately_sensitive:
         model1: output/process_eval.xlsx
