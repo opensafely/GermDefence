@@ -14,10 +14,10 @@ study = StudyDefinition(
         """registered AND 
         enrolled""",
 
-        registered=patients.registered_as_of("index_date"),
+        registered=patients.registered_as_of("2020-11-10"),
 
         enrolled=patients.registered_practice_as_of(
-            "index_date",
+            "2020-11-10",
             returning="rct__germdefence__enrolled",
             return_expectations={
                 "incidence": 0.99,
