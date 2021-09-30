@@ -163,6 +163,8 @@ tab list_size
 *get practice x week level data, then collapse to one row per week, summing event counts for each outcome
 use "$gd/output/practice_weekly.dta", replace
 
+drop if practice_id==0
+
 *add intervention group indicator
 merge m:1 practice_id using "$gd/output/practice_variables.dta"
 drop _merge
@@ -177,7 +179,6 @@ gen period = (date2>=d(10nov2020))
 merge m:1 intervention using "$gd/output/pop_by_intervention.dta"
 drop _merge
 
-drop if practice_id==0
 
 *check data
 export excel using "$gd/output/weekly_check.xlsx", firstrow(variables) replace
