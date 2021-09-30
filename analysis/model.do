@@ -7,9 +7,13 @@ DATE: 					Sept 2021
 DESCRIPTION OF FILE:	Merge data for each outcome into one 
 						Run intervention-control comparisons - as per protocol analysis
 						Run interrupted time series models as secondary analysi
-DATASETS USED:			data in memory ($output/input_practice.dta)
-DATASETS CREATED: 		practice_variables.dta
-OTHER OUTPUT: 			none		
+DATASETS USED:			data in memory ($output/measuresmeasure_*.csv)
+DATASETS CREATED: 		output/practice_weekly.dta
+						output/measures/measure_*_weekly.dta x8
+						output/process_eval.dta
+OTHER OUTPUT: 			PerProtocol.xlsx, DiD_weekly.xlsx
+						CITS_weekly.xlsx, CITS_RandInt.xlsx	
+						*_plots.pdf x8
 =======================================================================================*/
 
 global gd "`c(pwd)'"

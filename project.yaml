@@ -52,9 +52,11 @@ actions:
         plot7: output/antibio_plot.pdf
         plot8: output/adm_plot.pdf
 
-#  run_process_evaluation:
-#    run: stata-mp:latest analysis/process_eval.do
-#    outputs:
-#      moderately_sensitive:
-#        model1: output/process_eval_main.xlsx
-#        model2: output/process_eval_alternative.xlsx
+  run_process_evaluation:
+    run: stata-mp:latest analysis/process_eval.do
+    outputs:
+      moderately_sensitive:
+        model1: output/process_eval.xlsx
+        model2: output/process_eval_cat.xlsx
+        model3: output/process_eval2.xlsx
+        model4: output/process_eval_cat2.xlsx
