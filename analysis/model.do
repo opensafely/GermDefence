@@ -105,7 +105,7 @@ save "$gd/output/practice_weekly.dta", replace
 *** I. Per protocol analysis
 
 *+collapse post-intervention data to one row per practice - sum event counts for each outcome 
-drop if period==1
+drop if period!=1
 collapse (sum) rti_events arti_events gastro_events coviddiag_events covidsympsens_events covidsympspec_events antibio_events adm_events population, by(practice_id)
 
 *add practice covariates
@@ -161,8 +161,6 @@ putexcel A1=matrix(r(table)), names
 use "$gd/output/practice_variables.dta", replace
 collapse (sum) list_size, by(intervention)
 save "$gd/output/pop_by_intervention.dta", replace
-
-tab list_size
 
 *get practice x week level data, then collapse to one row per week, summing event counts for each outcome
 use "$gd/output/practice_weekly.dta", replace
