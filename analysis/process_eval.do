@@ -162,7 +162,7 @@ xi: glm covidsympspec_events users_cat3 i.deprivation_decile ethnic_minority_pct
 putexcel set "$gd/output/process_eval_cat.xlsx", sheet("covidsympspec2") modify
 putexcel A1=matrix(r(table)), names
 
-xi: glm antbio_events users_cat3 i.deprivation_decile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
+xi: glm antibio_events users_cat3 i.deprivation_decile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
 putexcel set "$gd/output/process_eval_cat.xlsx", sheet("antibio2") modify
 putexcel A1=matrix(r(table)), names
 
