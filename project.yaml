@@ -39,6 +39,7 @@ actions:
       moderately_sensitive:
         model1: output/PerProtocol.xlsx
         model2: output/DiD_weekly.xlsx
+        data: output/process_eval.dta
         check: output/weekly_check.xlsx
         check2: output/practice_weekly_glmm.xlsx
         model3: output/CITS_weekly.xlsx
