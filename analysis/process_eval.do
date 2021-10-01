@@ -103,70 +103,70 @@ replace users_cat3=2 if user_rate>=0.1
 
 * i. deprivation as continuous
 
-glm rti_events users_cat3 deprivation_pctile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
+glm rti_events i.users_cat3 deprivation_pctile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
 putexcel set "$gd/output/process_eval_cat.xlsx", sheet("RTI") replace
 putexcel A1=matrix(r(table)), names
 
-glm arti_events users_cat3 deprivation_pctile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
+glm arti_events i.users_cat3 deprivation_pctile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
 putexcel set "$gd/output/process_eval_cat.xlsx", sheet("aRTI") modify
 putexcel A1=matrix(r(table)), names
 
-glm gastro_events users_cat3 deprivation_pctile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
+glm gastro_events i.users_cat3 deprivation_pctile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
 putexcel set "$gd/output/process_eval_cat.xlsx", sheet("gastro") modify
 putexcel A1=matrix(r(table)), names
 
-glm coviddiag_events users_cat3 deprivation_pctile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
+glm coviddiag_events i.users_cat3 deprivation_pctile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
 putexcel set "$gd/output/process_eval_cat.xlsx", sheet("coviddiag") modify
 putexcel A1=matrix(r(table)), names
 
-glm covidsympsens_events users_cat3 deprivation_pctile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
+glm covidsympsens_events i.users_cat3 deprivation_pctile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
 putexcel set "$gd/output/process_eval_cat.xlsx", sheet("covidsympsens") modify
 putexcel A1=matrix(r(table)), names
 
-glm covidsympspec_events users_cat3 deprivation_pctile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
+glm covidsympspec_events i.users_cat3 deprivation_pctile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
 putexcel set "$gd/output/process_eval_cat.xlsx", sheet("covidsympspec") modify
 putexcel A1=matrix(r(table)), names
 
-glm antibio_events users_cat3 deprivation_pctile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
+glm antibio_events i.users_cat3 deprivation_pctile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
 putexcel set "$gd/output/process_eval_cat.xlsx", sheet("antibio") modify
 putexcel A1=matrix(r(table)), names
 
-glm adm_events users_cat3 deprivation_pctile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
+glm adm_events i.users_cat3 deprivation_pctile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
 putexcel set "$gd/output/process_eval_cat.xlsx", sheet("adm") modify
 putexcel A1=matrix(r(table)), names
 
 
 * ii. deprivation as categorical (deciles)
 
-xi: glm rti_events users_cat3 i.deprivation_decile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
+xi: glm rti_events i.users_cat3 i.deprivation_decile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
 putexcel set "$gd/output/process_eval_cat.xlsx", sheet("RTI2") modify
 putexcel A1=matrix(r(table)), names
 
-xi: glm arti_events users_cat3 i.deprivation_decile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
+xi: glm arti_events i.users_cat3 i.deprivation_decile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
 putexcel set "$gd/output/process_eval_cat.xlsx", sheet("aRTI2") modify
 putexcel A1=matrix(r(table)), names
 
-xi: glm gastro_events users_cat3 i.deprivation_decile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
+xi: glm gastro_events i.users_cat3 i.deprivation_decile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
 putexcel set "$gd/output/process_eval_cat.xlsx", sheet("gastro2") modify
 putexcel A1=matrix(r(table)), names
 
-xi: glm coviddiag_events users_cat3 i.deprivation_decile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
+xi: glm coviddiag_events i.users_cat3 i.deprivation_decile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
 putexcel set "$gd/output/process_eval_cat.xlsx", sheet("coviddiag2") modify
 putexcel A1=matrix(r(table)), names
 
-xi: glm covidsympsens_events users_cat3 i.deprivation_decile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
+xi: glm covidsympsens_events i.users_cat3 i.deprivation_decile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
 putexcel set "$gd/output/process_eval_cat.xlsx", sheet("covidsympsens2") modify
 putexcel A1=matrix(r(table)), names
 
-xi: glm covidsympspec_events users_cat3 i.deprivation_decile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
+xi: glm covidsympspec_events i.users_cat3 i.deprivation_decile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
 putexcel set "$gd/output/process_eval_cat.xlsx", sheet("covidsympspec2") modify
 putexcel A1=matrix(r(table)), names
 
-xi: glm antibio_events users_cat3 i.deprivation_decile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
+xi: glm antibio_events i.users_cat3 i.deprivation_decile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
 putexcel set "$gd/output/process_eval_cat.xlsx", sheet("antibio2") modify
 putexcel A1=matrix(r(table)), names
 
-xi: glm adm_events users_cat3 i.deprivation_decile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
+xi: glm adm_events i.users_cat3 i.deprivation_decile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
 putexcel set "$gd/output/process_eval_cat.xlsx", sheet("adm2") modify
 putexcel A1=matrix(r(table)), names
 
@@ -255,69 +255,69 @@ xtile user_rate_over1pct_cat = user_rate, nq(3)
 
 * i. deprivation as continuous
 
-glm rti_events user_rate_over1pct_cat deprivation_pctile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
+glm rti_events i.user_rate_over1pct_cat deprivation_pctile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
 putexcel set "$gd/output/process_eval_cat2.xlsx", sheet("RTI") replace
 putexcel A1=matrix(r(table)), names
 
-glm arti_events user_rate_over1pct_cat deprivation_pctile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
+glm arti_events i.user_rate_over1pct_cat deprivation_pctile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
 putexcel set "$gd/output/process_eval_cat2.xlsx", sheet("aRTI") modify
 putexcel A1=matrix(r(table)), names
 
-glm gastro_events user_rate_over1pct_cat deprivation_pctile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
+glm gastro_events i.user_rate_over1pct_cat deprivation_pctile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
 putexcel set "$gd/output/process_eval_cat2.xlsx", sheet("gastro") modify
 putexcel A1=matrix(r(table)), names
 
-glm coviddiag_events user_rate_over1pct_cat deprivation_pctile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
+glm coviddiag_events i.user_rate_over1pct_cat deprivation_pctile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
 putexcel set "$gd/output/process_eval_cat2.xlsx", sheet("coviddiag") modify
 putexcel A1=matrix(r(table)), names
 
-glm covidsympsens_events user_rate_over1pct_cat deprivation_pctile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
+glm covidsympsens_events i.user_rate_over1pct_cat deprivation_pctile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
 putexcel set "$gd/output/process_eval_cat2.xlsx", sheet("covidsympsens") modify
 putexcel A1=matrix(r(table)), names
 
-glm covidsympspec_events user_rate_over1pct_cat deprivation_pctile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
+glm covidsympspec_events i.user_rate_over1pct_cat deprivation_pctile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
 putexcel set "$gd/output/process_eval_cat2.xlsx", sheet("covidsympspec") modify
 putexcel A1=matrix(r(table)), names
 
-glm antibio_events user_rate_over1pct_cat deprivation_pctile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
+glm antibio_events i.user_rate_over1pct_cat deprivation_pctile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
 putexcel set "$gd/output/process_eval_cat2.xlsx", sheet("antibio") modify
 putexcel A1=matrix(r(table)), names
 
-glm adm_events user_rate_over1pct_cat deprivation_pctile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
+glm adm_events i.user_rate_over1pct_cat deprivation_pctile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
 putexcel set "$gd/output/process_eval_cat2.xlsx", sheet("adm") modify
 putexcel A1=matrix(r(table)), names
 
 
 * ii. deprivation as categorical (deciles)
 
-xi: glm rti_events user_rate_over1pct_cat i.deprivation_decile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
+xi: glm rti_events i.user_rate_over1pct_cat i.deprivation_decile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
 putexcel set "$gd/output/process_eval_cat2.xlsx", sheet("RTI2") modify
 putexcel A1=matrix(r(table)), names
 
-xi: glm arti_events user_rate_over1pct_cat i.deprivation_decile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
+xi: glm arti_events i.user_rate_over1pct_cat i.deprivation_decile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
 putexcel set "$gd/output/process_eval_cat2.xlsx", sheet("aRTI2") modify
 putexcel A1=matrix(r(table)), names
 
-xi: glm gastro_events user_rate_over1pct_cat i.deprivation_decile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
+xi: glm gastro_events i.user_rate_over1pct_cat i.deprivation_decile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
 putexcel set "$gd/output/process_eval_cat2.xlsx", sheet("gastro2") modify
 putexcel A1=matrix(r(table)), names
 
-xi: glm coviddiag_events user_rate_over1pct_cat i.deprivation_decile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
+xi: glm coviddiag_events i.user_rate_over1pct_cat i.deprivation_decile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
 putexcel set "$gd/output/process_eval_cat2.xlsx", sheet("coviddiag2") modify
 putexcel A1=matrix(r(table)), names
 
-xi: glm covidsympsens_events user_rate_over1pct_cat i.deprivation_decile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
+xi: glm covidsympsens_events i.user_rate_over1pct_cat i.deprivation_decile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
 putexcel set "$gd/output/process_eval_cat2.xlsx", sheet("covidsympsens2") modify
 putexcel A1=matrix(r(table)), names
 
-xi: glm covidsympspec_events user_rate_over1pct_cat i.deprivation_decile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
+xi: glm covidsympspec_events i.user_rate_over1pct_cat i.deprivation_decile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
 putexcel set "$gd/output/process_eval_cat2.xlsx", sheet("covidsympspec2") modify
 putexcel A1=matrix(r(table)), names
 
-xi: glm antibio_events user_rate_over1pct_cat i.deprivation_decile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
+xi: glm antibio_events i.user_rate_over1pct_cat i.deprivation_decile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
 putexcel set "$gd/output/process_eval_cat2.xlsx", sheet("antibio2") modify
 putexcel A1=matrix(r(table)), names
 
-xi: glm adm_events user_rate_over1pct_cat i.deprivation_decile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
+xi: glm adm_events i.user_rate_over1pct_cat i.deprivation_decile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
 putexcel set "$gd/output/process_eval_cat2.xlsx", sheet("adm2") modify
 putexcel A1=matrix(r(table)), names
