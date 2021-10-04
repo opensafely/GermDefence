@@ -42,7 +42,8 @@ gen intervention=0
 replace intervention=1 if practice_trial_arm=="1"
 
 tab intervention
-summarize female_pct median_age deprivation_pctile ethnic_minority_pct, detail
+summarize female_pct median_age deprivation_pctile ethnic_minority_pct, detail if intervention==0
+summarize female_pct median_age deprivation_pctile ethnic_minority_pct, detail if intervention==1
 
 *save practice-level data for use in main analysis programs
 save "$gd/output/practice_variables.dta", replace
