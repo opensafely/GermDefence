@@ -252,6 +252,9 @@ putexcel A1=matrix(r(table)), names
 ** B. Model user rate as categorical
 
 xtile user_rate_over1pct_cat = user_rate, nq(3)
+summarize user_rate_over1pct_cat, if user_rate_over1pct_cat==0
+summarize user_rate_over1pct_cat, if user_rate_over1pct_cat==1
+summarize user_rate_over1pct_cat, if user_rate_over1pct_cat==2
 
 * i. deprivation as continuous
 

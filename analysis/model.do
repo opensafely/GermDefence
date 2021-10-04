@@ -356,34 +356,34 @@ export excel using "$gd/output/practice_weekly_glmm.xlsx", firstrow(variables) r
 
 
 *Random intercepts CITS
-menbreg rti_events time intervention period time_intervention time_period intervention_period time_int_period median_age deprivation_pctile female_pct, exposure(list_size) || practice_id: 
+menbreg rti_events time intervention period time_intervention time_period intervention_period time_int_period median_age deprivation_pctile female_pct ethnic_minority_pct, exposure(list_size) || practice_id: 
 putexcel set "$gd/output/CITS_RandInt.xlsx", sheet("RTI") replace
 putexcel A1=matrix(r(table)), names
 
-menbreg arti_events time intervention period time_intervention time_period intervention_period time_int_period median_age deprivation_pctile female_pct, exposure(list_size) || practice_id: 
+menbreg arti_events time intervention period time_intervention time_period intervention_period time_int_period median_age deprivation_pctile female_pct ethnic_minority_pct, exposure(list_size) || practice_id: 
 putexcel set "$gd/output/CITS_RandInt.xlsx", sheet("aRTI") modify
 putexcel A1=matrix(r(table)), names
 
-menbreg gastro_events time intervention period time_intervention time_period intervention_period time_int_period median_age deprivation_pctile female_pct, exposure(list_size) || practice_id: 
+menbreg gastro_events time intervention period time_intervention time_period intervention_period time_int_period median_age deprivation_pctile female_pct ethnic_minority_pct, exposure(list_size) || practice_id: 
 putexcel set "$gd/output/CITS_RandInt.xlsx", sheet("gastro") modify
 putexcel A1=matrix(r(table)), names
 
-menbreg coviddiag_events time intervention period time_intervention time_period intervention_period time_int_period median_age deprivation_pctile female_pct, exposure(list_size) || practice_id: 
+menbreg coviddiag_events time intervention period time_intervention time_period intervention_period time_int_period median_age deprivation_pctile female_pct ethnic_minority_pct, exposure(list_size) || practice_id: 
 putexcel set "$gd/output/CITS_RandInt.xlsx", sheet("CovidDiag") modify
 putexcel A1=matrix(r(table)), names
 
-menbreg covidsympsens_events time intervention period time_intervention time_period intervention_period time_int_period median_age deprivation_pctile female_pct, exposure(list_size) || practice_id: 
+menbreg covidsympsens_events time intervention period time_intervention time_period intervention_period time_int_period median_age deprivation_pctile female_pct ethnic_minority_pct, exposure(list_size) || practice_id: 
 putexcel set "$gd/output/CITS_RandInt.xlsx", sheet("CovidSympSens") modify
 putexcel A1=matrix(r(table)), names
 
-menbreg covidsympspec_events time intervention period time_intervention time_period intervention_period time_int_period median_age deprivation_pctile female_pct, exposure(list_size) || practice_id: 
+menbreg covidsympspec_events time intervention period time_intervention time_period intervention_period time_int_period median_age deprivation_pctile female_pct ethnic_minority_pct, exposure(list_size) || practice_id: 
 putexcel set "$gd/output/CITS_RandInt.xlsx", sheet("CovidSympSpec") modify
 putexcel A1=matrix(r(table)), names
 
-menbreg antibio_events time intervention period time_intervention time_period intervention_period time_int_period median_age deprivation_pctile female_pct, exposure(list_size) || practice_id: 
+menbreg antibio_events time intervention period time_intervention time_period intervention_period time_int_period median_age deprivation_pctile female_pct ethnic_minority_pct, exposure(list_size) || practice_id: 
 putexcel set "$gd/output/CITS_RandInt.xlsx", sheet("antibio") modify
 putexcel A1=matrix(r(table)), names
 
-menbreg adm_events time intervention period time_intervention time_period intervention_period time_int_period median_age deprivation_pctile female_pct, exposure(list_size) || practice_id: 
+menbreg adm_events time intervention period time_intervention time_period intervention_period time_int_period median_age deprivation_pctile female_pct ethnic_minority_pct, exposure(list_size) || practice_id: 
 putexcel set "$gd/output/CITS_RandInt.xlsx", sheet("adm") modify
 putexcel A1=matrix(r(table)), names

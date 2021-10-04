@@ -41,6 +41,9 @@ gen female_pct=n_female/list_size
 gen intervention=0
 replace intervention=1 if practice_trial_arm=="1"
 
+tab intervention
+summarize female_pct median_age deprivation_pctile ethnic_minority_pct, detail
+
 *save practice-level data for use in main analysis programs
 save "$gd/output/practice_variables.dta", replace
 export excel using "$gd/output/practice_variables.xlsx", firstrow(variables) replace
