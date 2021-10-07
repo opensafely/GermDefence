@@ -337,6 +337,9 @@ drop _merge
 
 gen time=week_date - 17.5
 
+*Check smallest count
+tabstat gastro_events list_size, stat(sum) by(intervention)
+
 *create interaction variables
 gen time_period = 0
 replace time_period = time if period==1
