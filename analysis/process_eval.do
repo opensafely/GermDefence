@@ -323,3 +323,16 @@ putexcel A1=matrix(r(table)), names
 xi: glm adm_events i.user_rate_over1pct_cat i.deprivation_decile ethnic_minority_pct median_age, family(nb) link(log) exposure(list_size)
 putexcel set "$gd/output/process_eval_cat2.xlsx", sheet("adm2") modify
 putexcel A1=matrix(r(table)), names
+
+
+*** C. Differential effects of user_rate on outcomes
+
+xtile deprivation_quintile = deprivation_pctile, nq(5)
+xtile age_quintile = median_age, nq(5)
+xtile eth_quintile = ethnic_minority_pct, nq(5)
+
+glm rti_events c.user_rate##deprivation_quintile, family(nb) link(log) exposure(list_size)
+glm rti_events c.user_rate##age_quintile, family(nb) link(log) exposure(list_size)
+glm rti_events c.user_rate##eth_quintile, family(nb) link(log) exposure(list_size)
+
+
