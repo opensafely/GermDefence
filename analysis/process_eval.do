@@ -345,7 +345,7 @@ testparm c.user_rate##age_quintile
 glm arti_events c.user_rate##eth_quintile, family(nb) link(log) exposure(list_size)
 testparm c.user_rate##eth_quintile
 
-glm gasto_events c.user_rate##deprivation_quintile, family(nb) link(log) exposure(list_size)
+glm gastro_events c.user_rate##deprivation_quintile, family(nb) link(log) exposure(list_size)
 testparm c.user_rate##deprivation_quintile
 glm gastro_events c.user_rate##age_quintile, family(nb) link(log) exposure(list_size)
 testparm c.user_rate##age_quintile
