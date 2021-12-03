@@ -366,11 +366,13 @@ testparm c.user_rate##age_quintile
 glm covidsympsens_events c.user_rate##eth_quintile, family(nb) link(log) exposure(list_size)
 testparm c.user_rate##eth_quintile
 
-glm covidsympspec_events c.user_rate##deprivation_quintile, family(nb) link(log) exposure(list_size)
+gen user_rate2=user_rate*100
+
+glm covidsympspec_events c.user_rate2##deprivation_quintile, family(nb) link(log) exposure(list_size)
 testparm c.user_rate##deprivation_quintile
-glm covidsympspec_events c.user_rate##age_quintile, family(nb) link(log) exposure(list_size)
+glm covidsympspec_events c.user_rate2##age_quintile, family(nb) link(log) exposure(list_size)
 testparm c.user_rate##age_quintile
-glm covidsympspec_events c.user_rate##eth_quintile, family(nb) link(log) exposure(list_size)
+glm covidsympspec_events c.user_rate2##eth_quintile, family(nb) link(log) exposure(list_size)
 testparm c.user_rate##eth_quintile
 
 glm antibio_events c.user_rate##deprivation_quintile, family(nb) link(log) exposure(list_size)
