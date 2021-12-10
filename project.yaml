@@ -62,3 +62,4 @@ actions:
         model2: output/process_eval_cat.xlsx
         model3: output/process_eval2.xlsx
         model4: output/process_eval_cat2.xlsx
+        data: output/process_eval_check.csv
