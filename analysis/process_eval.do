@@ -331,7 +331,7 @@ xtile deprivation_quintile = deprivation_pctile, nq(3)
 xtile age_quintile = median_age, nq(3)
 xtile eth_quintile = ethnic_minority_pct, nq(3)
 
-export excel using "$gd/output/process_eval_check.xlsx", firstrow(variables)
+eexport excel using "$gd/output/process_eval_check.xlsx", firstrow(variables)
 
 glm rti_events c.user_rate##deprivation_quintile, family(nb) link(log) exposure(list_size)
 testparm c.user_rate##deprivation_quintile
