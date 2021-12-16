@@ -327,9 +327,9 @@ putexcel A1=matrix(r(table)), names
 
 *** C. Differential effects of user_rate on outcomes across categories of deprivation, age and ethnicity
 
-xtile deprivation_quintile = deprivation_pctile, nq(5)
-xtile age_quintile = median_age, nq(5)
-xtile eth_quintile = ethnic_minority_pct, nq(5)
+xtile deprivation_quintile = deprivation_pctile, nq(3)
+xtile age_quintile = median_age, nq(3)
+xtile eth_quintile = ethnic_minority_pct, nq(3)
 
 export excel using "$gd/output/process_eval_check.xlsx", firstrow(variables)
 
