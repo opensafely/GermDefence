@@ -331,6 +331,8 @@ xtile deprivation_quintile = deprivation_pctile, nq(3)
 xtile age_quintile = median_age, nq(3)
 xtile eth_quintile = ethnic_minority_pct, nq(3)
 
+gen user_rate2=user_rate*100
+
 export excel using "$gd/output/process_eval_check.xlsx", firstrow(variables)
 
 glm rti_events c.user_rate##deprivation_quintile, family(nb) link(log) exposure(list_size)
@@ -368,14 +370,12 @@ testparm c.user_rate##age_quintile
 glm covidsympsens_events c.user_rate##eth_quintile, family(nb) link(log) exposure(list_size)
 testparm c.user_rate##eth_quintile
 
-gen user_rate2=user_rate*100
-
 glm covidsympspec_events c.user_rate2##deprivation_quintile, family(nb) link(log) exposure(list_size)
-testparm c.user_rate##deprivation_quintile
+testparm c.user_rate2##deprivation_quintile
 glm covidsympspec_events c.user_rate2##age_quintile, family(nb) link(log) exposure(list_size)
-testparm c.user_rate##age_quintile
+testparm c.user_rate2##age_quintile
 glm covidsympspec_events c.user_rate2##eth_quintile, family(nb) link(log) exposure(list_size)
-testparm c.user_rate##eth_quintile
+testparm c.user_rate2##eth_quintile
 
 glm antibio_events c.user_rate##deprivation_quintile, family(nb) link(log) exposure(list_size)
 testparm c.user_rate##deprivation_quintile
