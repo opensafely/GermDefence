@@ -325,67 +325,140 @@ putexcel set "$gd/output/process_eval_cat2.xlsx", sheet("adm2") modify
 putexcel A1=matrix(r(table)), names
 
 
+
+
 *** C. Differential effects of user_rate on outcomes across categories of deprivation, age and ethnicity
 
-xtile deprivation_quintile = deprivation_pctile, nq(5)
-xtile age_quintile = median_age, nq(5)
-xtile eth_quintile = ethnic_minority_pct, nq(5)
+xtile deprivation_quintile = deprivation_pctile, nq(4)
+xtile age_quintile = median_age, nq(4)
+xtile eth_quintile = ethnic_minority_pct, nq(4)
 
 export excel using "$gd/output/process_eval_check.xlsx", firstrow(variables)
 
 glm rti_events c.user_rate##deprivation_quintile, family(nb) link(log) exposure(list_size)
+putexcel set "$gd/output/process_eval_post_dep.xlsx", sheet("RTI") replace
+putexcel A1=matrix(r(table)), names
 testparm c.user_rate##deprivation_quintile
+
 glm rti_events c.user_rate##age_quintile, family(nb) link(log) exposure(list_size)
+putexcel set "$gd/output/process_eval_post_age.xlsx", sheet("RTI") replace
+putexcel A1=matrix(r(table)), names
 testparm c.user_rate##age_quintile
+
 glm rti_events c.user_rate##eth_quintile, family(nb) link(log) exposure(list_size)
+putexcel set "$gd/output/process_eval_post_eth.xlsx", sheet("RTI") replace
+putexcel A1=matrix(r(table)), names
 testparm c.user_rate##eth_quintile
+
 
 glm arti_events c.user_rate##deprivation_quintile, family(nb) link(log) exposure(list_size)
+putexcel set "$gd/output/process_eval_post_dep.xlsx", sheet("aRTI") modify
+putexcel A1=matrix(r(table)), names
 testparm c.user_rate##deprivation_quintile
+
 glm arti_events c.user_rate##age_quintile, family(nb) link(log) exposure(list_size)
+putexcel set "$gd/output/process_eval_post_age.xlsx", sheet("aRTI") modify
+putexcel A1=matrix(r(table)), names
 testparm c.user_rate##age_quintile
+
 glm arti_events c.user_rate##eth_quintile, family(nb) link(log) exposure(list_size)
+putexcel set "$gd/output/process_eval_post_eth.xlsx", sheet("aRTI") modify
+putexcel A1=matrix(r(table)), names
 testparm c.user_rate##eth_quintile
+
 
 glm gastro_events c.user_rate##deprivation_quintile, family(nb) link(log) exposure(list_size)
+putexcel set "$gd/output/process_eval_post_dep.xlsx", sheet("gastro") modify
+putexcel A1=matrix(r(table)), names
 testparm c.user_rate##deprivation_quintile
+
 glm gastro_events c.user_rate##age_quintile, family(nb) link(log) exposure(list_size)
+putexcel set "$gd/output/process_eval_post_age.xlsx", sheet("gastro") modify
+putexcel A1=matrix(r(table)), names
 testparm c.user_rate##age_quintile
+
 glm gastro_events c.user_rate##eth_quintile, family(nb) link(log) exposure(list_size)
+putexcel set "$gd/output/process_eval_post_eth.xlsx", sheet("gastro") modify
+putexcel A1=matrix(r(table)), names
 testparm c.user_rate##eth_quintile
+
 
 glm coviddiag_events c.user_rate##deprivation_quintile, family(nb) link(log) exposure(list_size)
+putexcel set "$gd/output/process_eval_post_dep.xlsx", sheet("coviddiag") modify
+putexcel A1=matrix(r(table)), names
 testparm c.user_rate##deprivation_quintile
+
 glm coviddiag_events c.user_rate##age_quintile, family(nb) link(log) exposure(list_size)
+putexcel set "$gd/output/process_eval_post_age.xlsx", sheet("coviddiag") modify
+putexcel A1=matrix(r(table)), names
 testparm c.user_rate##age_quintile
+
 glm coviddiag_events c.user_rate##eth_quintile, family(nb) link(log) exposure(list_size)
+putexcel set "$gd/output/process_eval_post_eth.xlsx", sheet("coviddiag") modify
+putexcel A1=matrix(r(table)), names
 testparm c.user_rate##eth_quintile
+
 
 glm covidsympsens_events c.user_rate##deprivation_quintile, family(nb) link(log) exposure(list_size)
+putexcel set "$gd/output/process_eval_post_dep.xlsx", sheet("covidsympsens") modify
+putexcel A1=matrix(r(table)), names
 testparm c.user_rate##deprivation_quintile
+
 glm covidsympsens_events c.user_rate##age_quintile, family(nb) link(log) exposure(list_size)
+putexcel set "$gd/output/process_eval_post_age.xlsx", sheet("covidsympsens") modify
+putexcel A1=matrix(r(table)), names
 testparm c.user_rate##age_quintile
+
 glm covidsympsens_events c.user_rate##eth_quintile, family(nb) link(log) exposure(list_size)
+putexcel set "$gd/output/process_eval_post_eth.xlsx", sheet("covidsympsens") modify
+putexcel A1=matrix(r(table)), names
 testparm c.user_rate##eth_quintile
+
 
 glm covidsympspec_events c.user_rate##deprivation_quintile, family(nb) link(log) exposure(list_size)
+putexcel set "$gd/output/process_eval_post_dep.xlsx", sheet("covidsympspec") modify
+putexcel A1=matrix(r(table)), names
 testparm c.user_rate##deprivation_quintile
+
 glm covidsympspec_events c.user_rate##age_quintile, family(nb) link(log) exposure(list_size)
+putexcel set "$gd/output/process_eval_post_age.xlsx", sheet("covidsympspec") modify
+putexcel A1=matrix(r(table)), names
 testparm c.user_rate##age_quintile
+
 glm covidsympspec_events c.user_rate##eth_quintile, family(nb) link(log) exposure(list_size)
+putexcel set "$gd/output/process_eval_post_eth.xlsx", sheet("covidsympspec") modify
+putexcel A1=matrix(r(table)), names
 testparm c.user_rate##eth_quintile
+
 
 glm antibio_events c.user_rate##deprivation_quintile, family(nb) link(log) exposure(list_size)
+putexcel set "$gd/output/process_eval_post_dep.xlsx", sheet("antibio") modify
+putexcel A1=matrix(r(table)), names
 testparm c.user_rate##deprivation_quintile
+
 glm antibio_events c.user_rate##age_quintile, family(nb) link(log) exposure(list_size)
+putexcel set "$gd/output/process_eval_post_age.xlsx", sheet("antibio") modify
+putexcel A1=matrix(r(table)), names
 testparm c.user_rate##age_quintile
+
 glm antibio_events c.user_rate##eth_quintile, family(nb) link(log) exposure(list_size)
+putexcel set "$gd/output/process_eval_post_eth.xlsx", sheet("antibio") modify
+putexcel A1=matrix(r(table)), names
 testparm c.user_rate##eth_quintile
 
+
 glm adm_events c.user_rate##deprivation_quintile, family(nb) link(log) exposure(list_size)
+putexcel set "$gd/output/process_eval_post_dep.xlsx", sheet("adm") modify
+putexcel A1=matrix(r(table)), names
 testparm c.user_rate##deprivation_quintile
+
 glm adm_events c.user_rate##age_quintile, family(nb) link(log) exposure(list_size)
+putexcel set "$gd/output/process_eval_post_age.xlsx", sheet("adm") modify
+putexcel A1=matrix(r(table)), names
 testparm c.user_rate##age_quintile
+
 glm adm_events c.user_rate##eth_quintile, family(nb) link(log) exposure(list_size)
+putexcel set "$gd/output/process_eval_post_eth.xlsx", sheet("adm") modify
+putexcel A1=matrix(r(table)), names
 testparm c.user_rate##eth_quintile
 
