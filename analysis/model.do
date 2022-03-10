@@ -142,6 +142,7 @@ putexcel A1=matrix(r(table)), names
 glm covidsympspec_events i.intervention, family(nb) link(log) exposure(list_size)
 putexcel set "$gd/output/PerProtocol.xlsx", sheet("CovidSympSpec") modify
 putexcel A1=matrix(r(table)), names
+lincom _cons + 1.intervention
 
 glm antibio_events i.intervention, family(nb) link(log) exposure(list_size)
 putexcel set "$gd/output/PerProtocol.xlsx", sheet("Antibio") modify
