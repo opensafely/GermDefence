@@ -5,9 +5,11 @@ PROJECT:				Germ Defence
 AUTHOR:					S Walter
 DATE: 					Sept 2021					
 DESCRIPTION OF FILE:	Merge data for each outcome into one 
-						Run intervention-control comparisons - as per protocol analysis
-						Run interrupted time series models as secondary analysi
-DATASETS USED:			data in memory ($output/measuresmeasure_*.csv)
+						Run intervention-control comparisons - as per intention-to-treat analysis
+						Run interrupted time series models as secondary analysis
+							-Negative binomial GLM
+							-Negative binomial random intercepts
+DATASETS USED:			data in memory ($output/measure/smeasure_*.csv)
 DATASETS CREATED: 		output/practice_weekly.dta
 						output/measures/measure_*_weekly.dta x8
 						output/process_eval.dta
@@ -102,9 +104,9 @@ replace week_date = week + 25 if year==2021
 save "$gd/output/practice_weekly.dta", replace
 
 
-*** I. Per protocol analysis
+*** I. Intention-to-treat analysis
 
-*+collapse post-intervention data to one row per practice - sum event counts for each outcome 
+*collapse post-intervention data to one row per practice - sum event counts for each outcome 
 drop if period!=1
 collapse (sum) rti_events arti_events gastro_events coviddiag_events covidsympsens_events covidsympspec_events antibio_events adm_events population, by(practice_id)
 
@@ -115,9 +117,8 @@ drop _merge
 *save data for use in process evaluation
 save "$gd/output/process_eval.dta", replace
 
-*drop if practice_id==0
 
-*+Compare event rates between intervention vs. control during post-intervention period: 10/11/20 - 15/03/21
+*Compare event rates between intervention vs. control during post-intervention period: 10/11/20 - 15/03/21
 
 glm rti_events i.intervention, family(nb) link(log) exposure(list_size)
 putexcel set "$gd/output/PerProtocol.xlsx", sheet("RTI") replace
@@ -161,7 +162,7 @@ lincom _cons + 1.intervention
 
 
 
-*** II. Time series analysis
+*** II. Conrolled interrupted time series analysis
 
 ** A. Weekly level analysis
 
@@ -172,8 +173,6 @@ save "$gd/output/pop_by_intervention.dta", replace
 
 *get practice x week level data, then collapse to one row per week, summing event counts for each outcome
 use "$gd/output/practice_weekly.dta", replace
-
-*drop if practice_id==0
 
 *add intervention group indicator
 merge m:1 practice_id using "$gd/output/practice_variables.dta"
@@ -190,11 +189,7 @@ merge m:1 intervention using "$gd/output/pop_by_intervention.dta"
 drop _merge
 
 
-*check data
-export excel using "$gd/output/weekly_check.xlsx", firstrow(variables) replace
-
-
-*create interaction variables
+*create interaction variables for CITS model [as described in Linden (2015) The Stata Journal, 15(2), pp. 480–500]
 gen time_period = 0
 replace time_period = time if period==1
 
