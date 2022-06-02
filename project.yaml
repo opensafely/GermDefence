@@ -37,7 +37,7 @@ actions:
     needs: [generate_measures, run_practice_variables]
     outputs:
       moderately_sensitive:
-        model1: output/PerProtocol.xlsx
+        model1: output/PerProtocolv2.xlsx
         model2: output/DiD_weekly.xlsx
         data: output/process_eval.dta
         check: output/weekly_check.xlsx

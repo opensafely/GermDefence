@@ -120,43 +120,43 @@ save "$gd/output/process_eval.dta", replace
 
 *Compare event rates between intervention vs. control during post-intervention period: 10/11/20 - 15/03/21
 
-glm rti_events i.intervention, family(nb) link(log) exposure(list_size)
-putexcel set "$gd/output/PerProtocol.xlsx", sheet("RTI") replace
+glm rti_events i.intervention, family(nb ml) link(log) exposure(list_size)
+putexcel set "$gd/output/PerProtocolv2.xlsx", sheet("RTI") replace
 putexcel A1=matrix(r(table)), names 
 lincom _cons + 1.intervention
 
-glm arti_events i.intervention, family(nb) link(log) exposure(list_size)
-putexcel set "$gd/output/PerProtocol.xlsx", sheet("aRTI") modify
+glm arti_events i.intervention, family(nb ml) link(log) exposure(list_size)
+putexcel set "$gd/output/PerProtocolv2.xlsx", sheet("aRTI") modify
 putexcel A1=matrix(r(table)), names
 lincom _cons + 1.intervention
 
-glm gastro_events i.intervention, family(nb) link(log) exposure(list_size)
-putexcel set "$gd/output/PerProtocol.xlsx", sheet("gastro") modify
+glm gastro_events i.intervention, family(nb ml) link(log) exposure(list_size)
+putexcel set "$gd/output/PerProtocolv2.xlsx", sheet("gastro") modify
 putexcel A1=matrix(r(table)), names
 lincom _cons + 1.intervention
 
-glm coviddiag_events i.intervention, family(nb) link(log) exposure(list_size)
-putexcel set "$gd/output/PerProtocol.xlsx", sheet("CovidDiag") modify
+glm coviddiag_events i.intervention, family(nb ml) link(log) exposure(list_size)
+putexcel set "$gd/output/PerProtocolv2.xlsx", sheet("CovidDiag") modify
 putexcel A1=matrix(r(table)), names
 lincom _cons + 1.intervention
 
-glm covidsympsens_events i.intervention, family(nb) link(log) exposure(list_size)
-putexcel set "$gd/output/PerProtocol.xlsx", sheet("CovidSympSens") modify
+glm covidsympsens_events i.intervention, family(nb ml) link(log) exposure(list_size)
+putexcel set "$gd/output/PerProtocolv2.xlsx", sheet("CovidSympSens") modify
 putexcel A1=matrix(r(table)), names
 lincom _cons + 1.intervention
 
-glm covidsympspec_events i.intervention, family(nb) link(log) exposure(list_size)
-putexcel set "$gd/output/PerProtocol.xlsx", sheet("CovidSympSpec") modify
+glm covidsympspec_events i.intervention, family(nb ml) link(log) exposure(list_size)
+putexcel set "$gd/output/PerProtocolv2.xlsx", sheet("CovidSympSpec") modify
 putexcel A1=matrix(r(table)), names
 lincom _cons + 1.intervention
 
-glm antibio_events i.intervention, family(nb) link(log) exposure(list_size)
-putexcel set "$gd/output/PerProtocol.xlsx", sheet("Antibio") modify
+glm antibio_events i.intervention, family(nb ml) link(log) exposure(list_size)
+putexcel set "$gd/output/PerProtocolv2.xlsx", sheet("Antibio") modify
 putexcel A1=matrix(r(table)), names
 lincom _cons + 1.intervention
 
-glm adm_events i.intervention, family(nb) link(log) exposure(list_size)
-putexcel set "$gd/output/PerProtocol.xlsx", sheet("adm") modify
+glm adm_events i.intervention, family(nb ml) link(log) exposure(list_size)
+putexcel set "$gd/output/PerProtocolv2.xlsx", sheet("adm") modify
 putexcel A1=matrix(r(table)), names
 lincom _cons + 1.intervention
 
