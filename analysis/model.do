@@ -359,7 +359,7 @@ replace time_int_period = time if intervention_period==1
 
 *drop if practice_id==0
 
-export excel using "$gd/output/practice_weekly_glmm.xlsx", firstrow(variables) replace
+*export excel using "$gd/output/practice_weekly_glmm.xlsx", firstrow(variables) replace
 
 
 *Random intercepts CITS
