@@ -102,6 +102,7 @@ replace week_date = week + 25 if year==2021
 
 *save practice x week level data
 save "$gd/output/practice_weekly.dta", replace
+export excel using "$gd/output/practice_weekly.xlsx", firstrow(variables) replace
 
 
 *** I. Intention-to-treat analysis

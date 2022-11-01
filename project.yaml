@@ -42,7 +42,7 @@ actions:
         model3: output/DiD_weekly.xlsx
         data: output/process_eval.dta
 #        check: output/weekly_check.xlsx
-#        check2: output/practice_weekly_glmm.xlsx
+        check2: output/practice_weekly.xlsx
         model4: output/CITS_weekly.xlsx
         model5: output/CITS_RandInt.xlsx
         plot1: output/rti_plot.pdf
