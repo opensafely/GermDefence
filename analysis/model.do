@@ -121,42 +121,42 @@ save "$gd/output/process_eval.dta", replace
 
 *Compare event rates between intervention vs. control during post-intervention period: 10/11/20 - 15/03/21
 
-glm rti_events i.intervention, family(nb ml) link(log) exposure(list_size)
+glm rti_events i.intervention, family(nb ml) link(log) exposure(population)
 putexcel set "$gd/output/PerProtocolv2.xlsx", sheet("RTI") replace
 putexcel A1=matrix(r(table)), names 
 lincom _cons + 1.intervention
 
-glm arti_events i.intervention, family(nb ml) link(log) exposure(list_size)
+glm arti_events i.intervention, family(nb ml) link(log) exposure(population)
 putexcel set "$gd/output/PerProtocolv2.xlsx", sheet("aRTI") modify
 putexcel A1=matrix(r(table)), names
 lincom _cons + 1.intervention
 
-glm gastro_events i.intervention, family(nb ml) link(log) exposure(list_size)
+glm gastro_events i.intervention, family(nb ml) link(log) exposure(population)
 putexcel set "$gd/output/PerProtocolv2.xlsx", sheet("gastro") modify
 putexcel A1=matrix(r(table)), names
 lincom _cons + 1.intervention
 
-glm coviddiag_events i.intervention, family(nb ml) link(log) exposure(list_size)
+glm coviddiag_events i.intervention, family(nb ml) link(log) exposure(population)
 putexcel set "$gd/output/PerProtocolv2.xlsx", sheet("CovidDiag") modify
 putexcel A1=matrix(r(table)), names
 lincom _cons + 1.intervention
 
-glm covidsympsens_events i.intervention, family(nb ml) link(log) exposure(list_size)
+glm covidsympsens_events i.intervention, family(nb ml) link(log) exposure(population)
 putexcel set "$gd/output/PerProtocolv2.xlsx", sheet("CovidSympSens") modify
 putexcel A1=matrix(r(table)), names
 lincom _cons + 1.intervention
 
-glm covidsympspec_events i.intervention, family(nb ml) link(log) exposure(list_size)
+glm covidsympspec_events i.intervention, family(nb ml) link(log) exposure(population)
 putexcel set "$gd/output/PerProtocolv2.xlsx", sheet("CovidSympSpec") modify
 putexcel A1=matrix(r(table)), names
 lincom _cons + 1.intervention
 
-glm antibio_events i.intervention, family(nb ml) link(log) exposure(list_size)
+glm antibio_events i.intervention, family(nb ml) link(log) exposure(population)
 putexcel set "$gd/output/PerProtocolv2.xlsx", sheet("Antibio") modify
 putexcel A1=matrix(r(table)), names
 lincom _cons + 1.intervention
 
-glm adm_events i.intervention, family(nb ml) link(log) exposure(list_size)
+glm adm_events i.intervention, family(nb ml) link(log) exposure(population)
 putexcel set "$gd/output/PerProtocolv2.xlsx", sheet("adm") modify
 putexcel A1=matrix(r(table)), names
 lincom _cons + 1.intervention
@@ -205,35 +205,35 @@ replace time_int_period = time if intervention_period==1
 
 
 * i. Difference in differences model
-glm rti_events intervention period intervention_period, family(nb ml) link(log) exposure(list_size)
+glm rti_events intervention period intervention_period, family(nb ml) link(log) exposure(population)
 putexcel set "$gd/output/DiD_weekly.xlsx", sheet("RTI") replace
 putexcel A1=matrix(r(table)), names
 
-glm arti_events intervention period intervention_period, family(nb ml) link(log) exposure(list_size)
+glm arti_events intervention period intervention_period, family(nb ml) link(log) exposure(population)
 putexcel set "$gd/output/DiD_weekly.xlsx", sheet("aRTI") modify
 putexcel A1=matrix(r(table)), names
 
-glm gastro_events intervention period intervention_period, family(nb ml) link(log) exposure(list_size)
+glm gastro_events intervention period intervention_period, family(nb ml) link(log) exposure(population)
 putexcel set "$gd/output/DiD_weekly.xlsx", sheet("gastro") modify
 putexcel A1=matrix(r(table)), names
 
-glm coviddiag_events intervention period intervention_period, family(nb ml) link(log) exposure(list_size)
+glm coviddiag_events intervention period intervention_period, family(nb ml) link(log) exposure(population)
 putexcel set "$gd/output/DiD_weekly.xlsx", sheet("CovidDiag") modify
 putexcel A1=matrix(r(table)), names
 
-glm covidsympsens_events intervention period intervention_period, family(nb ml) link(log) exposure(list_size)
+glm covidsympsens_events intervention period intervention_period, family(nb ml) link(log) exposure(population)
 putexcel set "$gd/output/DiD_weekly.xlsx", sheet("CovidSympSens") modify
 putexcel A1=matrix(r(table)), names
 
-glm covidsympspec_events intervention period intervention_period, family(nb ml) link(log) exposure(list_size)
+glm covidsympspec_events intervention period intervention_period, family(nb ml) link(log) exposure(population)
 putexcel set "$gd/output/DiD_weekly.xlsx", sheet("CovidSympSpec") modify
 putexcel A1=matrix(r(table)), names
 
-glm antibio_events intervention period intervention_period, family(nb ml) link(log) exposure(list_size)
+glm antibio_events intervention period intervention_period, family(nb ml) link(log) exposure(population)
 putexcel set "$gd/output/DiD_weekly.xlsx", sheet("antibio") modify
 putexcel A1=matrix(r(table)), names
 
-glm adm_events intervention period intervention_period, family(nb ml) link(log) exposure(list_size)
+glm adm_events intervention period intervention_period, family(nb ml) link(log) exposure(population)
 putexcel set "$gd/output/DiD_weekly.xlsx", sheet("adm") modify
 putexcel A1=matrix(r(table)), names
 
@@ -243,7 +243,7 @@ putexcel A1=matrix(r(table)), names
 sort intervention time
 
 *Respiratory tract infections
-glm rti_events time intervention period time_intervention time_period intervention_period time_int_period, family(nb ml) link(log) exposure(list_size)
+glm rti_events time intervention period time_intervention time_period intervention_period time_int_period, family(nb ml) link(log) exposure(population)
 putexcel set "$gd/output/CITS_weekly.xlsx", sheet("RTI") replace
 putexcel A1=matrix(r(table)), names
 
@@ -254,7 +254,7 @@ graph twoway (line rti_pred_rate time if intervention==1, lcolor(maroon)) (line 
 graph export "$gd/output/rti_plot.pdf", as(pdf)
 
 *Acute respiratory tract infections
-glm arti_events time intervention period time_intervention time_period intervention_period time_int_period, family(nb ml) link(log) exposure(list_size)
+glm arti_events time intervention period time_intervention time_period intervention_period time_int_period, family(nb ml) link(log) exposure(population)
 putexcel set "$gd/output/CITS_weekly.xlsx", sheet("aRTI") modify
 putexcel A1=matrix(r(table)), names
 
@@ -265,7 +265,7 @@ graph twoway (line arti_pred_rate time if intervention==1, lcolor(maroon)) (line
 graph export "$gd/output/arti_plot.pdf", as(pdf)
 
 *Gastro intestinal infections
-glm gastro_events time intervention period time_intervention time_period intervention_period time_int_period, family(nb ml) link(log) exposure(list_size)
+glm gastro_events time intervention period time_intervention time_period intervention_period time_int_period, family(nb ml) link(log) exposure(population)
 putexcel set "$gd/output/CITS_weekly.xlsx", sheet("gastro") modify
 putexcel A1=matrix(r(table)), names
 
@@ -276,7 +276,7 @@ graph twoway (line gastro_pred_rate time if intervention==1, lcolor(maroon)) (li
 graph export "$gd/output/gastro_plot.pdf", as(pdf)
 
 *Covid-19 diagnoses
-glm coviddiag_events time intervention period time_intervention time_period intervention_period time_int_period, family(nb ml) link(log) exposure(list_size)
+glm coviddiag_events time intervention period time_intervention time_period intervention_period time_int_period, family(nb ml) link(log) exposure(population)
 putexcel set "$gd/output/CITS_weekly.xlsx", sheet("CovidDiag") modify
 putexcel A1=matrix(r(table)), names
 
@@ -287,7 +287,7 @@ graph twoway (line coviddiag_pred_rate time if intervention==1, lcolor(maroon)) 
 graph export "$gd/output/coviddiag_plot.pdf", as(pdf)
 
 *Covid-19 symptoms - senstivie list
-glm covidsympsens_events time intervention period time_intervention time_period intervention_period time_int_period, family(nb ml) link(log) exposure(list_size)
+glm covidsympsens_events time intervention period time_intervention time_period intervention_period time_int_period, family(nb ml) link(log) exposure(population)
 putexcel set "$gd/output/CITS_weekly.xlsx", sheet("CovidSympSens") modify
 putexcel A1=matrix(r(table)), names
 
@@ -298,7 +298,7 @@ graph twoway (line covidsympsens_pred_rate time if intervention==1, lcolor(maroo
 graph export "$gd/output/covidsympsens_plot.pdf", as(pdf)
 
 *Covid-19 symptoms - specific list
-glm covidsympspec_events time intervention period time_intervention time_period intervention_period time_int_period, family(nb ml) link(log) exposure(list_size)
+glm covidsympspec_events time intervention period time_intervention time_period intervention_period time_int_period, family(nb ml) link(log) exposure(population)
 putexcel set "$gd/output/CITS_weekly.xlsx", sheet("CovidSympSpec") modify
 putexcel A1=matrix(r(table)), names
 
@@ -309,7 +309,7 @@ graph twoway (line covidsympspec_pred_rate time if intervention==1, lcolor(maroo
 graph export "$gd/output/covidsympspec_plot.pdf", as(pdf)
 
 *Antibiotics
-glm antibio_events time intervention period time_intervention time_period intervention_period time_int_period, family(nb ml) link(log) exposure(list_size)
+glm antibio_events time intervention period time_intervention time_period intervention_period time_int_period, family(nb ml) link(log) exposure(population)
 putexcel set "$gd/output/CITS_weekly.xlsx", sheet("antibio") modify
 putexcel A1=matrix(r(table)), names
 
@@ -320,7 +320,7 @@ graph twoway (line antibio_pred_rate time if intervention==1, lcolor(maroon)) (l
 graph export "$gd/output/antibio_plot.pdf", as(pdf)
 
 *Hospital admissions
-glm adm_events time intervention period time_intervention time_period intervention_period time_int_period, family(nb ml) link(log) exposure(list_size)
+glm adm_events time intervention period time_intervention time_period intervention_period time_int_period, family(nb ml) link(log) exposure(population)
 putexcel set "$gd/output/CITS_weekly.xlsx", sheet("adm") modify
 putexcel A1=matrix(r(table)), names
 
@@ -363,34 +363,34 @@ export excel using "$gd/output/practice_weekly_glmm.xlsx", firstrow(variables) r
 
 
 *Random intercepts CITS
-menbreg rti_events time intervention period time_intervention time_period intervention_period time_int_period median_age deprivation_pctile female_pct, exposure(list_size) || practice_id: 
+menbreg rti_events time intervention period time_intervention time_period intervention_period time_int_period median_age deprivation_pctile female_pct, exposure(population) || practice_id: 
 putexcel set "$gd/output/CITS_RandInt.xlsx", sheet("RTI") replace
 putexcel A1=matrix(r(table)), names
 
-menbreg arti_events time intervention period time_intervention time_period intervention_period time_int_period median_age deprivation_pctile female_pct, exposure(list_size) || practice_id: 
+menbreg arti_events time intervention period time_intervention time_period intervention_period time_int_period median_age deprivation_pctile female_pct, exposure(population) || practice_id: 
 putexcel set "$gd/output/CITS_RandInt.xlsx", sheet("aRTI") modify
 putexcel A1=matrix(r(table)), names
 
-menbreg gastro_events time intervention period time_intervention time_period intervention_period time_int_period median_age deprivation_pctile female_pct, exposure(list_size) || practice_id: 
+menbreg gastro_events time intervention period time_intervention time_period intervention_period time_int_period median_age deprivation_pctile female_pct, exposure(population) || practice_id: 
 putexcel set "$gd/output/CITS_RandInt.xlsx", sheet("gastro") modify
 putexcel A1=matrix(r(table)), names
 
-menbreg coviddiag_events time intervention period time_intervention time_period intervention_period time_int_period median_age deprivation_pctile female_pct, exposure(list_size) || practice_id: 
+menbreg coviddiag_events time intervention period time_intervention time_period intervention_period time_int_period median_age deprivation_pctile female_pct, exposure(population) || practice_id: 
 putexcel set "$gd/output/CITS_RandInt.xlsx", sheet("CovidDiag") modify
 putexcel A1=matrix(r(table)), names
 
-menbreg covidsympsens_events time intervention period time_intervention time_period intervention_period time_int_period median_age deprivation_pctile female_pct, exposure(list_size) || practice_id: 
+menbreg covidsympsens_events time intervention period time_intervention time_period intervention_period time_int_period median_age deprivation_pctile female_pct, exposure(population) || practice_id: 
 putexcel set "$gd/output/CITS_RandInt.xlsx", sheet("CovidSympSens") modify
 putexcel A1=matrix(r(table)), names
 
-menbreg covidsympspec_events time intervention period time_intervention time_period intervention_period time_int_period median_age deprivation_pctile female_pct, exposure(list_size) || practice_id: 
+menbreg covidsympspec_events time intervention period time_intervention time_period intervention_period time_int_period median_age deprivation_pctile female_pct, exposure(population) || practice_id: 
 putexcel set "$gd/output/CITS_RandInt.xlsx", sheet("CovidSympSpec") modify
 putexcel A1=matrix(r(table)), names
 
-menbreg antibio_events time intervention period time_intervention time_period intervention_period time_int_period median_age deprivation_pctile female_pct, exposure(list_size) || practice_id: 
+menbreg antibio_events time intervention period time_intervention time_period intervention_period time_int_period median_age deprivation_pctile female_pct, exposure(population) || practice_id: 
 putexcel set "$gd/output/CITS_RandInt.xlsx", sheet("antibio") modify
 putexcel A1=matrix(r(table)), names
 
-menbreg adm_events time intervention period time_intervention time_period intervention_period time_int_period median_age deprivation_pctile female_pct, exposure(list_size) || practice_id: 
+menbreg adm_events time intervention period time_intervention time_period intervention_period time_int_period median_age deprivation_pctile female_pct, exposure(population) || practice_id: 
 putexcel set "$gd/output/CITS_RandInt.xlsx", sheet("adm") modify
 putexcel A1=matrix(r(table)), names
