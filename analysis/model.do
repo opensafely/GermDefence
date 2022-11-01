@@ -20,7 +20,6 @@ OTHER OUTPUT: 			PerProtocol.xlsx, DiD_weekly.xlsx
 
 global gd "`c(pwd)'"
 
-
 *convert CSV files to .dta files
 
 import delimited using "$gd/output/measures/measure_RTI_weekly.csv", clear
@@ -364,7 +363,7 @@ replace time_int_period = time if intervention_period==1
 
 *Random intercepts CITS
 
-gen month=month(date)
+gen month=month(date2)
 
 menbreg rti_events time intervention period time_intervention time_period intervention_period time_int_period median_age deprivation_pctile female_pct i.month, exposure(population) || practice_id: 
 putexcel set "$gd/output/CITS_RandInt.xlsx", sheet("RTI") replace
