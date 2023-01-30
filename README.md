@@ -1,6 +1,6 @@
 # GermDefence
 
-This is the code and configuration for GermDefence.
+This is the code and configuration for the Germ Defence project. Germ Defence (www.germdefence.org) is an evidence-based interactive website that provides advice for infection control within households. This intervention was implemented rapidly and at scale via efficient trial deisgn to maximise the potential to effectively reduce the spread of COVID-19. This is the first RCT to be conducted using the OpenSAFELY platform.
 
 You can run this project via [Gitpod](https://gitpod.io) in a web browser by clicking on this badge: [![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-908a85?logo=gitpod)](https://gitpod.io/#https://github.com/opensafely/GermDefence)
 
