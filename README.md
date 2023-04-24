@@ -1,8 +1,6 @@
 # GermDefence
 
-This is the code and configuration for the Germ Defence project. Germ Defence (www.germdefence.org) is an evidence-based interactive website that provides advice for infection control within households. This intervention was implemented rapidly and at scale via efficient trial deisgn to maximise the potential to effectively reduce the spread of COVID-19. This is the first RCT to be conducted using the OpenSAFELY platform.
-
-[View on OpenSAFELY](https://jobs.opensafely.org/repo/https%253A%252F%252Fgithub.com%252Fopensafely%252F$GermDefence)
+[View on OpenSAFELY](https://jobs.opensafely.org/repo/https%253A%252F%252Fgithub.com%252Fopensafely%252FGermDefence)
 
 Details of the purpose and any published outputs from this project can be found at the link above.
 
