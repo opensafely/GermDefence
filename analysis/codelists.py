@@ -25,5 +25,5 @@ covidsympspec_codes = codelist_from_csv(
 )
 
 antibio_codes = codelist_from_csv(
-    "codelists/user-S_Walter-germdefence-antibiotics.csv", system="snomed", column="code"
+    "codelists/user-jon_massey-germdefence-test-dmd.csv", system="snomed", column="dmd_id"
 )

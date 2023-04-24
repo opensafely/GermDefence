@@ -36,11 +36,11 @@
       "downloaded_at": "2021-07-26 09:58:17.545278Z",
       "sha": "07bfb7fc094a857fa4b2e027e6c7026773d25334"
     },
-    "user-S_Walter-germdefence-antibiotics.csv": {
-      "id": "user/S_Walter/germdefence-antibiotics/3b07ce3f",
-      "url": "https://codelists.opensafely.org/codelist/user/S_Walter/germdefence-antibiotics/3b07ce3f/",
-      "downloaded_at": "2021-08-27 14:50:40.566703Z",
-      "sha": "03b47c0b814bdc72a96b81bfd638809226dc2680"
+    "user-jon_massey-germdefence-test-dmd.csv": {
+      "id": "user/jon_massey/germdefence-test-dmd/3f100acc",
+      "url": "https://codelists.opensafely.org/codelist/user/jon_massey/germdefence-test-dmd/3f100acc/",
+      "downloaded_at": "2023-04-24 09:14:06.090696Z",
+      "sha": "0dfe54d61229a357692e4a0e1c744499334fa8c6"
     }
   }
 }
